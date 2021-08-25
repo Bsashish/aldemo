@@ -5,32 +5,21 @@ type StyledLabelType = {
   label?: string;
 };
 
-const getCurrentData = (current, color) => {
-  switch (current) {
-    case 'Pre Market':
-    case 'Intraday':
-    case 'Post Market':
-      return { bg: color.darkBlue, text: color.white, fw: 600 };
-    default:
-      return { bg: '#fff', text: color.darkGrey, fw: 500 };
-  }
-};
-
 const StyledLabel = styled.label<StyledLabelType>`
   background-color: ${({ current, label, theme }) =>
     current === label
-      ? getCurrentData(current, theme.colors).bg
-      : getCurrentData('', '').bg};
+      ? theme.colors.darkBlue
+      : theme.colors.white};
   color: ${({ current, label, theme }) =>
     current === label
-      ? getCurrentData(current, theme.colors).text
-      : getCurrentData('', '').text};
+      ? theme.colors.white
+      : theme.colors.darkGrey};
   padding: 14px 54px;
   border-radius: ${({ current, label }) => current === label && '12px'};
   font-weight: ${({ current, label, theme }) =>
     current === label
-      ? getCurrentData(current, theme.colors).fw
-      : getCurrentData('', '').fw};
+      ? 600
+      : 500};
 
   &:first-child {
     border-top-left-radius: 12px;
