@@ -13,11 +13,12 @@ import { Container } from 'reactstrap';
 import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './pages/HomePage/Loadable';
+import { TopTen } from './pages/TopTen/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 import SideBar from './components/Sidebar';
 import Topbar from './components/Topbar';
-import { Alerts } from './pages/Alerts'
+import { Alerts } from './pages/Alerts';
 import { ThemeProvider } from 'styled-components';
 import colors from 'utils/colors';
 
@@ -38,7 +39,7 @@ export function App() {
           <Container fluid className="content is-open p-0">
             <Topbar />
             <Switch>
-              <Route exact path="/" component={HomePage} />
+              <Route exact path="/" component={TopTen} />
               <Route exact path="/alerts" component={Alerts} />
               <Route component={NotFoundPage} />
             </Switch>
