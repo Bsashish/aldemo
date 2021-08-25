@@ -17,6 +17,9 @@ import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 import SideBar from './components/Sidebar';
 import Topbar from './components/Topbar';
+import { Alerts } from './pages/Alerts'
+import { ThemeProvider } from 'styled-components';
+import colors from 'utils/colors';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -31,13 +34,16 @@ export function App() {
           <meta name="description" content="A React Boilerplate application" />
         </Helmet>
         <SideBar />
-        <Container fluid className="content is-open p-0">
-          <Topbar />
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route component={NotFoundPage} />
-          </Switch>
-        </Container>
+        <ThemeProvider theme={{ colors: colors }}>
+          <Container fluid className="content is-open p-0">
+            <Topbar />
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/alerts" component={Alerts} />
+              <Route component={NotFoundPage} />
+            </Switch>
+          </Container>
+        </ThemeProvider>
       </div>
       <GlobalStyle />
     </BrowserRouter>

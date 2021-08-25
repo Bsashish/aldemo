@@ -91,6 +91,7 @@ export const GlobalStyle = createGlobalStyle`
   .side-menu {
     overflow-y: auto;
     padding: 0px;
+    margin-top: 5rem;
   }
 
   .side-menu::-webkit-scrollbar {

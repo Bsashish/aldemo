@@ -50,7 +50,7 @@ const SideBar = () => {
           <img src={images.Logo} alt="aulrts" style={{ height: '38px' }} />
         </a>
       </div>
-      <div className="side-menu ps-4 pe-0 mt-5">
+      <div className="side-menu ps-4 pe-0">
         <Nav vertical className="list-unstyled">
           {sidebarItems.map(({ title, inActiveIcon, activeIcon, link }) => (
             <SideItem
