@@ -126,7 +126,7 @@ const data = [
 ];
 
 export const TopTen = () => {
-  const [current, setCurrent] = useState('Pre Market');
+  const [current, setCurrent] = useState('Top Ten Gains');
 
   return (
     <>
