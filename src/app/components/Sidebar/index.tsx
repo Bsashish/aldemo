@@ -39,6 +39,10 @@ const SideItem = styled(NavItem)`
   }
 `;
 
+const StyledContainerDiv = styled.div`
+  height: 100vh;
+`;
+
 const StyledDiv = styled.div`
   position: absolute;
   right: 12px;
@@ -67,7 +71,7 @@ const SideBar = ({
   const closeSideBarHandler = () => setIsOpen(false);
 
   return (
-    <div className={`sidebar${isOpen ? ' is-open' : ''}`}>
+    <StyledContainerDiv className={`sidebar${isOpen ? ' is-open' : ''}`}>
       <div className="sidebar-header">
         <a href="/">
           <img src={images.Logo} alt="aulrts" style={{ height: '38px' }} />
@@ -82,6 +86,7 @@ const SideBar = ({
         <Nav vertical className="list-unstyled">
           {sidebarItems.map(({ title, inActiveIcon, activeIcon, link }) => (
             <SideItem
+              key={link}
               active={active === link ? true : false}
               onClick={() => {
                 history.push(link);
@@ -97,7 +102,7 @@ const SideBar = ({
           ))}
         </Nav>
       </div>
-    </div>
+    </StyledContainerDiv>
   );
 };
 

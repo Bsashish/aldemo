@@ -38,11 +38,18 @@ export const GlobalStyle = createGlobalStyle`
 
   // Side bar styles
   .sidebar {
-    min-width: 225px;
-    max-width: 225px;
+    width: 100%;
     background: ${colors.white};
-    margin-left: -225px;
     transition: all 0.5s;
+    @media only screen and (max-width: 768px) {
+      position: absolute;
+      z-index: 1501;
+      margin-left: -100%;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      width: 225px;
+    }
   }
 
   .sidebar.is-open {
@@ -120,7 +127,7 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 768px) {
     body {
       overflow: hidden;
     }

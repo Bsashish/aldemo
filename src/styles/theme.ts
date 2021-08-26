@@ -1,4 +1,4 @@
-export default {
+const theme = {
   colors: {
     white: '#FFFFFF',
     offWhite: '#FCFCFC',
@@ -19,6 +19,8 @@ export default {
     large: '16px',
     xl: '20px',
     xxl: '24px',
-    huge: '32px'
-  }
-}
+    huge: '32px',
+  },
+};
+
+export default theme;
