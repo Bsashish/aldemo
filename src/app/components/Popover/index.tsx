@@ -1,22 +1,34 @@
 import PropTypes from 'prop-types';
-import { Popover, PopoverBody } from 'reactstrap';
+import { PopoverBody, UncontrolledPopover } from 'reactstrap';
 import styled from 'styled-components';
 
-const StyledPopover = styled(Popover)`
-  border: 0;
-  border-radius: 8px;
+const StyledPopover = styled(UncontrolledPopover)`
+  .popover {
+    max-width: initial;
+    border: 0;
+    border-radius: 8px;
+    top: 12px !important;
+    left: 12px !important;
+  }
 `;
 
-const CustomPopover = ({ children }) => {
+const StyledPopoverBody = styled(PopoverBody)`
+  min-width: 400px;
+`;
+
+const CustomPopover = ({ children, ...props }) => {
   return (
-    <StyledPopover>
-      <PopoverBody>{children}</PopoverBody>
+    <StyledPopover {...props}>
+      <StyledPopoverBody>{children}</StyledPopoverBody>
     </StyledPopover>
   );
 };
 
 CustomPopover.propTypes = {
   children: PropTypes.node.isRequired,
+  trigger: PropTypes.string,
+  placement: PropTypes.string,
+  target: PropTypes.string,
 };
 
 export default CustomPopover;
