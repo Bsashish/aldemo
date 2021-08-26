@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-import { Card, CardBody, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import styled from 'styled-components';
 
-const StyledTable = styled(Table)`
+const StyledTable = styled(Table).attrs(() => ({ responsive: true }))`
+  min-width: 550px;
+
   td,
   th {
     padding: 16px;
@@ -22,44 +24,41 @@ const StyledTable = styled(Table)`
   }
 `;
 
-const StyledCard = styled(Card)`
+const StyledDiv = styled.div`
   border: 0;
   border-radius: 8px;
-  margin: 24px auto;
-`;
-
-const StyledCardBody = styled(CardBody)`
+  background-color: white;
   padding: 12px 32px;
+  margin: 24px auto;
+  width: 100%;
 `;
 
 const CustomTable = ({ columns, data }) => {
   return (
-    <StyledCard>
-      <StyledCardBody>
-        <StyledTable>
-          <thead>
-            <tr>
-              {columns.map(column => (
-                <th key={column.field} style={column.style || {}}>
-                  {column.title}
-                </th>
+    <StyledDiv>
+      <StyledTable>
+        <thead>
+          <tr>
+            {columns.map(column => (
+              <th key={column.field} style={column.style || {}}>
+                {column.title}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {/* TODO: Update the key from index to something like id */}
+          {data.map((item, index) => (
+            <tr key={index}>
+              {/* TODO: Update the key from index to something like id */}
+              {columns.map((column, index) => (
+                <td key={index}>{item[column.field]}</td>
               ))}
             </tr>
-          </thead>
-          <tbody>
-            {/* TODO: Update the key from index to something like id */}
-            {data.map((item, index) => (
-              <tr key={index}>
-                {/* TODO: Update the key from index to something like id */}
-                {columns.map((column, index) => (
-                  <td key={index}>{item[column.field]}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </StyledTable>
-      </StyledCardBody>
-    </StyledCard>
+          ))}
+        </tbody>
+      </StyledTable>
+    </StyledDiv>
   );
 };
 

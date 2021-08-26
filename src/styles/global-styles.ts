@@ -57,6 +57,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 
   .menu-open {
@@ -115,13 +116,17 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
   }
 
+  .sidebar-sm {
+    display: none;
+  }
+
   @media only screen and (max-width: 500px) {
     body {
       overflow: hidden;
     }
 
-    .content.is-open {
-      margin-left: 100%;
+    .sidebar-sm {
+      display: block;
     }
 
     .sidebar.is-open {

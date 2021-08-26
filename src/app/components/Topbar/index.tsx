@@ -28,7 +28,7 @@ const StyledDropdownToggle = styled(DropdownToggle)`
     margin: 10px;
   }
 
-  p{
+  p {
     margin: 0;
 
     @media screen and (max-width: 500px) {
@@ -77,12 +77,32 @@ const DropDown = props => {
   );
 };
 
-const Topbar = () => {
-  const { colors  } = useTheme()
+const StyleButton = styled.button`
+  border: 0;
+  border-radius: 4px;
+`;
+
+const Topbar = ({
+  setIsOpen,
+}: {
+  setIsOpen: (isOpen: boolean | ((_: boolean) => boolean)) => void;
+}) => {
+  const { colors } = useTheme();
 
   return (
     <Header>
-      <AlertMessage text="ALERT CREDITS" value="2,000" valueColor={colors.green} />
+      {/* TODO: Change with ham burger menu icon */}
+      <StyleButton
+        className="sidebar-sm"
+        onClick={() => setIsOpen((prev: boolean) => !prev)}
+      >
+        =
+      </StyleButton>
+      <AlertMessage
+        text="ALERT CREDITS"
+        value="2,000"
+        valueColor={colors.green}
+      />
       <DropDown />
     </Header>
   );

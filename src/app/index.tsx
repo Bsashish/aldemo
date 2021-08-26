@@ -6,13 +6,12 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import * as React from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import { GlobalStyle } from 'styles/global-styles';
 
-import { HomePage } from './pages/HomePage/Loadable';
 import { TopTen } from './pages/TopTen/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +22,9 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 
 export function App() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const { i18n } = useTranslation();
+
   return (
     <BrowserRouter>
       <div className="App wrapper">
@@ -34,10 +35,10 @@ export function App() {
         >
           <meta name="description" content="A React Boilerplate application" />
         </Helmet>
-        <SideBar />
+        <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
         <ThemeProvider theme={theme}>
           <Container fluid className="content is-open p-0">
-            <Topbar />
+            <Topbar setIsOpen={setIsOpen} />
             <Switch>
               <Route exact path="/" component={TopTen} />
               <Route exact path="/alerts" component={Alerts} />
