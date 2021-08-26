@@ -39,20 +39,44 @@ const SideItem = styled(NavItem)`
   }
 `;
 
-const SideBar = () => {
+const StyledDiv = styled.div`
+  position: absolute;
+  right: 12px;
+`;
+
+const StyledCloseBtn = styled.button`
+  background-color: transparent;
+  color: ${colors.darkGrey};
+  border: 0;
+`;
+
+const SideBar = ({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}) => {
   const [active, setActive] = useState('/');
   const history = useHistory();
 
   useEffect(() => {
-    setActive(history.location.pathname)
-  }, [history])
+    setActive(history.location.pathname);
+  }, [history]);
+
+  const closeSideBarHandler = () => setIsOpen(false);
 
   return (
-    <div className="sidebar is-open">
+    <div className={`sidebar${isOpen ? ' is-open' : ''}`}>
       <div className="sidebar-header">
         <a href="/">
           <img src={images.Logo} alt="aulrts" style={{ height: '38px' }} />
         </a>
+        <StyledDiv>
+          <StyledCloseBtn className="sidebar-sm" onClick={closeSideBarHandler}>
+            X
+          </StyledCloseBtn>
+        </StyledDiv>
       </div>
       <div className="side-menu ps-4 pe-0">
         <Nav vertical className="list-unstyled">

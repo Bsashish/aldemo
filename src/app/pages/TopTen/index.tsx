@@ -1,11 +1,32 @@
 import { useState } from 'react';
-import { Toggle } from 'app/components/common';
-import CustomTable from 'app/components/Table';
 import styled from 'styled-components';
-import { Title } from 'app/components/common';
+import CustomTable from 'app/components/Table';
+import { Title, Toggle } from 'app/components/common';
 
 const StyledDiv = styled.div`
   padding: 0 1.5rem;
+`;
+
+const StyledFilterDiv = styled.div`
+  border: ${({ theme }) => `solid ${theme.colors.midGrey}`};
+  border-width: 1px 0;
+  padding: 18px 0;
+  margin: 24px 0;
+`;
+
+const StyledButton = styled.button`
+  border: 1px solid white;
+  border-radius: 24px;
+  padding: 8px 18px;
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.darkBlue};
+  letter-spacing: 1.1px;
+  font-weight: 600;
+  transition: 0.3s;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.green};
+  }
 `;
 
 const StyledIncreaseChangedDiv = styled.div`
@@ -30,9 +51,9 @@ const colums = [
   {
     title: '#',
     field: 'id',
-    style: {
-      width: '220px',
-    },
+    // style: {
+    //   width: '220px',
+    // },
   },
   {
     title: 'Symbol',
@@ -129,16 +150,17 @@ export const TopTen = () => {
   const [current, setCurrent] = useState('Top Ten Gains');
 
   return (
-    <>
-      <StyledDiv>
-        <Title title="Top Ten" />
-        <Toggle
-          items={['Top Ten Gains', 'Top Ten Shorts', 'Top Ten Swings']}
-          current={current}
-          setCurrent={setCurrent}
-        />
-        <CustomTable columns={colums} data={data} />
-      </StyledDiv>
-    </>
+    <StyledDiv>
+      <Title title="Top Ten" />
+      <Toggle
+        items={['Top Ten Gains', 'Top Ten Shorts', 'Top Ten Swings']}
+        current={current}
+        setCurrent={setCurrent}
+      />
+      <StyledFilterDiv>
+        <StyledButton>Issue Class</StyledButton>
+      </StyledFilterDiv>
+      <CustomTable columns={colums} data={data} />
+    </StyledDiv>
   );
 };
