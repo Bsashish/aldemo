@@ -20,7 +20,7 @@ import SideBar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import { Alerts } from './pages/Alerts';
 import { ThemeProvider } from 'styled-components';
-import colors from 'utils/colors';
+import theme from 'styles/theme';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -35,7 +35,7 @@ export function App() {
           <meta name="description" content="A React Boilerplate application" />
         </Helmet>
         <SideBar />
-        <ThemeProvider theme={{ colors: colors }}>
+        <ThemeProvider theme={theme}>
           <Container fluid className="content is-open p-0">
             <Topbar />
             <Switch>

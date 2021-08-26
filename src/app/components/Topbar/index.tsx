@@ -5,10 +5,13 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import colors from 'utils/colors';
+import { AlertMessage } from '../common';
 
 const StyledDropdownToggle = styled(DropdownToggle)`
+  display: flex;
+  align-items: center;
   background-color: ${colors.offWhite} !important;
   border: 0 !important;
   color: ${colors.darkBlue} !important;
@@ -24,6 +27,14 @@ const StyledDropdownToggle = styled(DropdownToggle)`
     height: 40px;
     margin: 10px;
   }
+
+  p{
+    margin: 0;
+
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
+  }
 `;
 
 const Header = styled.div`
@@ -32,12 +43,20 @@ const Header = styled.div`
   align-items: center;
   height: 65px;
   background: ${colors.offWhite};
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px;
 
   p {
     margin: 0;
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 0 10px;
+  }
+`;
+
+const StyledDropdownMenu = styled(DropdownMenu)`
+  right: 0;
+  top: 65px;
 `;
 
 const DropDown = props => {
@@ -49,19 +68,21 @@ const DropDown = props => {
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <StyledDropdownToggle caret={false}>
         <img src="https://picsum.photos/45" alt="profile" />
-        Myroslav &or;
+        <p>Myroslav &or;</p>
       </StyledDropdownToggle>
-      <DropdownMenu>
+      <StyledDropdownMenu>
         <DropdownItem>Myroslav</DropdownItem>
-      </DropdownMenu>
+      </StyledDropdownMenu>
     </Dropdown>
   );
 };
 
 const Topbar = () => {
+  const { colors  } = useTheme()
+
   return (
     <Header>
-      <p>You are credited with 2,000 Alerts</p>
+      <AlertMessage text="ALERT CREDITS" value="2,000" valueColor={colors.green} />
       <DropDown />
     </Header>
   );
