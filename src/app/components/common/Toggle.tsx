@@ -33,7 +33,7 @@ const StyledLabel = styled.label<StyledLabelType>`
     width: 100%;
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     &:first-child {
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
@@ -56,7 +56,7 @@ const StyledVerticalLine = styled.div`
     margin: ${({ theme }) => `0 ${theme.spacing.normal}`};
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     margin: ${({ theme }) => `${theme.spacing.normal} 0`};
     width: 75%;
     height: 2px;
@@ -73,7 +73,7 @@ const StyledToggle = styled.div`
     width: 100%;
   }
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 425px) {
     flex-direction: column;
   }
 `;
