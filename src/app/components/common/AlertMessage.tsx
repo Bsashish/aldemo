@@ -1,24 +1,23 @@
-import React from "react";
-import styled from "styled-components"
-import theme from "styles/theme";
+import React from 'react';
+import styled from 'styled-components';
 
 type StyledAlertMessageType = {
-    textColor?: string;
-    valueColor?: string;
-    btnColor?: string;
-    btnTextColor?: string;
-}
+  textColor?: string;
+  valueColor?: string;
+  btnColor?: string;
+  btnTextColor?: string;
+};
 
-type AlertMessage = {
-    icon?: any;
-    text?: string;
-    textColor?: string;
-    value?: string;
-    valueColor?: string;
-    btnColor?: string;
-    btnText?: string;
-    btnTextColor?: string;
-}
+type AlertMessageType = {
+  icon?: any;
+  text?: string;
+  textColor?: string;
+  value?: string;
+  valueColor?: string;
+  btnColor?: string;
+  btnText?: string;
+  btnTextColor?: string;
+};
 
 const StyledAlertMessage = styled.p<StyledAlertMessageType>`
   margin: 0;
@@ -27,10 +26,10 @@ const StyledAlertMessage = styled.p<StyledAlertMessageType>`
   font-size: 1em;
 
   .text {
-    color: ${({ textColor }) => textColor || "inherit"};
+    color: ${({ textColor }) => textColor || 'inherit'};
   }
   .value {
-    color: ${({ valueColor }) => valueColor || "inherit"};
+    color: ${({ valueColor }) => valueColor || 'inherit'};
   }
 `;
 
@@ -42,7 +41,7 @@ const StyledButton = styled.button<StyledAlertMessageType>`
   color: ${({ btnTextColor }) => btnTextColor};
 `;
 
-export const AlertMessage:React.FC<AlertMessage> = ({
+export const AlertMessage: React.FC<AlertMessageType> = ({
   icon: Icon,
   text,
   textColor,
@@ -50,7 +49,7 @@ export const AlertMessage:React.FC<AlertMessage> = ({
   valueColor,
   btnColor,
   btnText,
-  btnTextColor
+  btnTextColor,
 }) => {
   return (
     <StyledAlertMessage

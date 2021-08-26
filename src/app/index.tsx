@@ -18,11 +18,20 @@ import { useTranslation } from 'react-i18next';
 import SideBar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import { Alerts } from './pages/Alerts';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 
+const CustomContainer = styled(Container)`
+  max-height: calc(100vh - 65px);
+  overflow-y: auto;
+`;
+
+const StyledDiv = styled.div`
+  width: 100%;
+`;
+
 export function App() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   const { i18n } = useTranslation();
 
   return (
@@ -36,16 +45,18 @@ export function App() {
           <meta name="description" content="A React Boilerplate application" />
         </Helmet>
         <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
-        <ThemeProvider theme={theme}>
-          <Container fluid className="content is-open p-0">
+        <StyledDiv>
+          <ThemeProvider theme={theme}>
             <Topbar setIsOpen={setIsOpen} />
-            <Switch>
-              <Route exact path="/" component={TopTen} />
-              <Route exact path="/alerts" component={Alerts} />
-              <Route component={NotFoundPage} />
-            </Switch>
-          </Container>
-        </ThemeProvider>
+            <CustomContainer fluid className="content is-open p-0">
+              <Switch>
+                <Route exact path="/" component={TopTen} />
+                <Route exact path="/alerts" component={Alerts} />
+                <Route component={NotFoundPage} />
+              </Switch>
+            </CustomContainer>
+          </ThemeProvider>
+        </StyledDiv>
       </div>
       <GlobalStyle />
     </BrowserRouter>

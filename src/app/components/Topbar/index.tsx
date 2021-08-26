@@ -31,13 +31,14 @@ const StyledDropdownToggle = styled(DropdownToggle)`
   p {
     margin: 0;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 768px) {
       display: none;
     }
   }
 `;
 
 const Header = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +50,7 @@ const Header = styled.div`
     margin: 0;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 768px) {
     padding: 0 10px;
   }
 `;
