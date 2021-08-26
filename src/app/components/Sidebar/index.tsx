@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavItem, Nav } from 'reactstrap';
 import images from 'utils/images';
 import styled from 'styled-components';
@@ -42,6 +42,10 @@ const SideItem = styled(NavItem)`
 const SideBar = () => {
   const [active, setActive] = useState('/');
   const history = useHistory();
+
+  useEffect(() => {
+    setActive(history.location.pathname)
+  }, [history])
 
   return (
     <div className="sidebar is-open">
