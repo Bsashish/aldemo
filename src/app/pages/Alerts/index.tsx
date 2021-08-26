@@ -1,25 +1,32 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 import { Toggle } from 'app/components/common/Toggle';
 import { Title } from '../../components/common/Title';
 import CustomTable from 'app/components/Table';
 
-const StyledIncreaseChangedDiv = styled.div`
-  color: ${({ theme }) => theme.colors.green};
-
-  &::before {
-    content: '\\2191\\2002';
-    font-size: 20px;
-  }
+export const StyledTooltip = styled.div`
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.darkGrey};
+  font-style: italic;
+  text-transform: lowercase;
+  border-radius: 50%;
 `;
 
-const StyledDecreaseChangedDiv = styled.div`
-  color: ${({ theme }) => theme.colors.roseRed};
+const StyledTitle = styled.p`
+  color: ${({ theme }) => theme.colors.darkGrey};
+  font-size: 15px;
+  text-transform: uppercase;
+  margin: 0;
+`;
 
-  &::before {
-    content: '\\2193\\2002';
-    font-size: 20px;
-  }
+const StyledPrice = styled.div`
+  color: ${({ theme }) => theme.colors.green};
 `;
 
 export const Alerts = () => {
@@ -38,16 +45,20 @@ export const Alerts = () => {
       field: 'symbol',
     },
     {
-      title: 'Last Price',
-      field: 'lastPrice',
+      title: 'Price',
+      field: 'price',
     },
     {
-      title: 'Change',
-      field: 'change',
+      title: <div className="d-flex"><StyledTitle>movement</StyledTitle>&nbsp;<StyledTooltip data-for="tooltip" data-tip="movement">i</StyledTooltip></div>,
+      field: 'movement',
     },
     {
-      title: 'Amount',
-      field: 'amount',
+      title: <div className="d-flex"><StyledTitle>volume</StyledTitle>&nbsp;<StyledTooltip data-for="tooltip" data-tip="volume">i</StyledTooltip></div>,
+      field: 'volume',
+    },
+    {
+      title: <div className="d-flex"><StyledTitle>timestamp</StyledTitle>&nbsp;<StyledTooltip data-for="tooltip" data-tip="timestamp">i</StyledTooltip></div>,
+      field: 'timestamp',
     },
   ];
 
@@ -55,72 +66,82 @@ export const Alerts = () => {
     {
       id: 1,
       symbol: 'silk',
-      lastPrice: '$45.12',
-      change: <StyledIncreaseChangedDiv>+45.12</StyledIncreaseChangedDiv>,
-      amount: '45.12M',
+      price: <StyledPrice>$45.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 2,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.51</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '12:30:21'
     },
     {
       id: 3,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 4,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledIncreaseChangedDiv>+45.12</StyledIncreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 5,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledIncreaseChangedDiv>+45.12</StyledIncreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 6,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 7,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledIncreaseChangedDiv>+45.12</StyledIncreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 8,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 9,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
     {
       id: 10,
       symbol: 'wQWE',
-      lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
-      amount: '51.12M',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21'
     },
   ];
 
@@ -133,6 +154,7 @@ export const Alerts = () => {
         setCurrent={setCurrent}
       />
       <CustomTable columns={colums} data={data} />
+      <ReactTooltip id="tooltip" place="bottom" />
     </div>
   );
 };
