@@ -64,32 +64,56 @@ const tabs = [
   }
 ]
 
-const colums = [
-  {
-    title: '#',
-    field: 'id'
-  },
-  {
-    title: 'Symbol',
-    field: 'symbol',
-  },
-  {
-    title: 'Price',
-    field: 'price',
-  },
-  {
-    title: <div className="d-flex"><StyledTitle>movement</StyledTitle>&nbsp;<StyledTooltip data-for="tooltip" data-tip="movement">i</StyledTooltip></div>,
-    field: 'movement',
-  },
-  {
-    title: <div className="d-flex"><StyledTitle>volume</StyledTitle>&nbsp;<StyledTooltip data-for="tooltip" data-tip="volume">i</StyledTooltip></div>,
-    field: 'volume',
-  },
-  {
-    title: <div className="d-flex"><StyledTitle>timestamp</StyledTitle>&nbsp;<StyledTooltip data-for="tooltip" data-tip="timestamp">i</StyledTooltip></div>,
-    field: 'timestamp',
-  },
-];
+  const colums = [
+    {
+      title: '#',
+      field: 'id',
+      // style: {
+      //   width: '220px',
+      // },
+    },
+    {
+      title: 'Symbol',
+      field: 'symbol',
+    },
+    {
+      title: 'Price',
+      field: 'price',
+    },
+    {
+      title: (
+        <div className="d-flex">
+          <StyledTitle>movement</StyledTitle>&nbsp;
+          <StyledTooltip data-for="tooltip" data-tip="movement">
+            i
+          </StyledTooltip>
+        </div>
+      ),
+      field: 'movement',
+    },
+    {
+      title: (
+        <div className="d-flex">
+          <StyledTitle>volume</StyledTitle>&nbsp;
+          <StyledTooltip data-for="tooltip" data-tip="volume">
+            i
+          </StyledTooltip>
+        </div>
+      ),
+      field: 'volume',
+    },
+    {
+      title: (
+        <div className="d-flex">
+          <StyledTitle>timestamp</StyledTitle>&nbsp;
+          <StyledTooltip data-for="tooltip" data-tip="timestamp">
+            i
+          </StyledTooltip>
+        </div>
+      ),
+      field: 'timestamp',
+    },
+  ];
 
 const data = [
   [
@@ -99,7 +123,7 @@ const data = [
       price: <StyledPrice>$45.12</StyledPrice>,
       movement: '813223422',
       volume: '201,355,24',
-      timestamp: '05:30:21'
+      timestamp: '05:30:21',
     },
     {
       id: 2,
@@ -107,7 +131,7 @@ const data = [
       price: <StyledPrice>$4.51</StyledPrice>,
       movement: '813223422',
       volume: '201,355,24',
-      timestamp: '12:30:21'
+      timestamp: '12:30:21',
     },
     {
       id: 3,
@@ -115,7 +139,7 @@ const data = [
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',
       volume: '201,355,24',
-      timestamp: '05:30:21'
+      timestamp: '05:30:21',
     },
   ],
   [{
