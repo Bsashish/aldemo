@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import CustomTable from 'app/components/Table';
 import { Title, Toggle } from 'app/components/common';
+import CustomPopover from 'app/components/Popover';
 
 const StyledDiv = styled.div`
   padding: 0 1.5rem;
@@ -15,13 +16,14 @@ const StyledFilterDiv = styled.div`
 `;
 
 const StyledButton = styled.button`
-  border: 1px solid white;
+  border: 1px solid ${({ theme }) => theme.colors.darkBlue};
   border-radius: 24px;
   padding: 8px 18px;
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.darkBlue};
   letter-spacing: 1.1px;
   font-weight: 600;
+  margin-right: 8px;
   transition: 0.3s;
 
   &:hover {
@@ -45,6 +47,41 @@ const StyledDecreaseChangedDiv = styled.div`
     content: '\\2193\\2002';
     font-size: 20px;
   }
+`;
+
+const StyledSearchInput = styled.input`
+  border: 1px solid ${({ theme }) => theme.colors.midGrey};
+  border-radius: 8px;
+  padding: 6px;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.colors.green};
+  }
+`;
+
+const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
+  border: 1px solid ${({ theme }) => theme.colors.midGrey};
+  border-radius: 8px;
+  padding: 6px;
+
+  &:checked {
+    background-color: ${({ theme }) => theme.colors.green};
+  }
+`;
+
+const StyledCheckboxContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+`;
+
+const StyledHeader = styled.h5`
+  color: ${({ theme }) => theme.colors.darkBlue};
+  margin: 0;
+  min-width: 120px;
 `;
 
 const colums = [
@@ -146,8 +183,50 @@ const data = [
   },
 ];
 
+const options = [
+  {
+    title: 'Depository Receipt',
+    value: 'depositoryReceipt',
+    isChecked: false,
+  },
+  {
+    title: 'American Depository Share',
+    value: 'americanDepositoryShare',
+    isChecked: false,
+  },
+  {
+    title: 'Index',
+    value: 'index',
+    isChecked: false,
+  },
+  {
+    title: 'Common Stock',
+    value: 'commonStock',
+    isChecked: false,
+  },
+  {
+    title: '144A',
+    value: '144a',
+    isChecked: false,
+  },
+];
+
 export const TopTen = () => {
   const [current, setCurrent] = useState('Top Ten Gains');
+  // const [valueToSearch, setValueToSearch] = useState('Top Ten Gains');
+  const [issueClassOptions, setIssueClassOptions] = useState([...options]);
+
+  const changeValueHandler = ({ target: { value: searchedValue } }) => {
+    if (!searchedValue) {
+      setIssueClassOptions(options);
+    }
+
+    setIssueClassOptions(
+      options.filter(({ title }) =>
+        title.toLowerCase().includes(searchedValue.toLowerCase()),
+      ),
+    );
+  };
 
   return (
     <StyledDiv>
@@ -158,7 +237,28 @@ export const TopTen = () => {
         setCurrent={setCurrent}
       />
       <StyledFilterDiv>
-        <StyledButton>Issue Class</StyledButton>
+        <StyledButton id="PopoverClick" type="button">
+          Issue Class
+        </StyledButton>
+        <CustomPopover
+          trigger="legacy"
+          placement="bottom"
+          target="PopoverClick"
+        >
+          <StyledSearchInput
+            type="search"
+            placeholder="Search"
+            onChange={changeValueHandler}
+          />
+          {issueClassOptions.map(option => (
+            <StyledCheckboxContainer>
+              <StyledHeader>{option.title}</StyledHeader>
+              <StyledCheckbox checked={option.isChecked} />
+            </StyledCheckboxContainer>
+          ))}
+        </CustomPopover>
+        <StyledButton>Sector</StyledButton>
+        <StyledButton>Index</StyledButton>
       </StyledFilterDiv>
       <CustomTable columns={colums} data={data} />
     </StyledDiv>
