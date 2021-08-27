@@ -12,9 +12,7 @@ export const Alerts = (): JSX.Element => {
         tabs={tabs}
         minWidthInContent={'initial'}
         render={(index: number): JSX.Element => {
-          return (
-            <CustomTable columns={colums} data={data[index - 1] || data[0]} />
-          )
+          return <CustomTable columns={colums} data={data[index]} />;
         }}
       />
       <ReactTooltip id="tooltip" place="bottom" />
@@ -48,72 +46,72 @@ const StyledPrice = styled.div`
 
 const tabs = [
   {
-    id: 1,
+    id: 0,
     name: 'Pre Market',
-    type: 'Pre'
+    type: 'Pre',
+  },
+  {
+    id: 1,
+    name: 'Intraday',
+    type: 'In',
   },
   {
     id: 2,
-    name: 'Intraday',
-    type: 'In'
+    name: 'Post Market',
+    type: 'Post',
+  },
+];
+
+const colums = [
+  {
+    title: '#',
+    field: 'id',
+    // style: {
+    //   width: '220px',
+    // },
   },
   {
-    id: 3,
-    name: 'Post Market',
-    type: 'Post'
-  }
-]
-
-  const colums = [
-    {
-      title: '#',
-      field: 'id',
-      // style: {
-      //   width: '220px',
-      // },
-    },
-    {
-      title: 'Symbol',
-      field: 'symbol',
-    },
-    {
-      title: 'Price',
-      field: 'price',
-    },
-    {
-      title: (
-        <div className="d-flex">
-          <StyledTitle>movement</StyledTitle>&nbsp;
-          <StyledTooltip data-for="tooltip" data-tip="movement">
-            i
-          </StyledTooltip>
-        </div>
-      ),
-      field: 'movement',
-    },
-    {
-      title: (
-        <div className="d-flex">
-          <StyledTitle>volume</StyledTitle>&nbsp;
-          <StyledTooltip data-for="tooltip" data-tip="volume">
-            i
-          </StyledTooltip>
-        </div>
-      ),
-      field: 'volume',
-    },
-    {
-      title: (
-        <div className="d-flex">
-          <StyledTitle>timestamp</StyledTitle>&nbsp;
-          <StyledTooltip data-for="tooltip" data-tip="timestamp">
-            i
-          </StyledTooltip>
-        </div>
-      ),
-      field: 'timestamp',
-    },
-  ];
+    title: 'Symbol',
+    field: 'symbol',
+  },
+  {
+    title: 'Price',
+    field: 'price',
+  },
+  {
+    title: (
+      <div className="d-flex">
+        <StyledTitle>movement</StyledTitle>&nbsp;
+        <StyledTooltip data-for="tooltip" data-tip="movement">
+          i
+        </StyledTooltip>
+      </div>
+    ),
+    field: 'movement',
+  },
+  {
+    title: (
+      <div className="d-flex">
+        <StyledTitle>volume</StyledTitle>&nbsp;
+        <StyledTooltip data-for="tooltip" data-tip="volume">
+          i
+        </StyledTooltip>
+      </div>
+    ),
+    field: 'volume',
+  },
+  {
+    title: (
+      <div className="d-flex">
+        <StyledTitle>timestamp</StyledTitle>&nbsp;
+        <StyledTooltip data-for="tooltip" data-tip="timestamp">
+          i
+        </StyledTooltip>
+      </div>
+    ),
+    field: 'timestamp',
+  },
+];
 
 const data = [
   [
@@ -142,62 +140,64 @@ const data = [
       timestamp: '05:30:21',
     },
   ],
-  [{
-    id: 4,
-    symbol: 'wQWE',
-    price: <StyledPrice>$4.12</StyledPrice>,
-    movement: '813223422',
-    volume: '201,355,24',
-    timestamp: '05:30:21'
-  },
-  {
-    id: 5,
-    symbol: 'wQWE',
-    price: <StyledPrice>$4.12</StyledPrice>,
-    movement: '813223422',
-    volume: '201,355,24',
-    timestamp: '05:30:21'
-  },
-  {
-    id: 6,
-    symbol: 'wQWE',
-    price: <StyledPrice>$4.12</StyledPrice>,
-    movement: '813223422',
-    volume: '201,355,24',
-    timestamp: '05:30:21'
-  },
-  {
-    id: 7,
-    symbol: 'wQWE',
-    price: <StyledPrice>$4.12</StyledPrice>,
-    movement: '813223422',
-    volume: '201,355,24',
-    timestamp: '05:30:21'
-  },
+  [
+    {
+      id: 4,
+      symbol: 'wQWE',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21',
+    },
+    {
+      id: 5,
+      symbol: 'wQWE',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21',
+    },
+    {
+      id: 6,
+      symbol: 'wQWE',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21',
+    },
+    {
+      id: 7,
+      symbol: 'wQWE',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21',
+    },
   ],
-  [{
-    id: 8,
-    symbol: 'wQWE',
-    price: <StyledPrice>$4.12</StyledPrice>,
-    movement: '813223422',
-    volume: '201,355,24',
-    timestamp: '05:30:21'
-  },
-  {
-    id: 9,
-    symbol: 'wQWE',
-    price: <StyledPrice>$4.12</StyledPrice>,
-    movement: '813223422',
-    volume: '201,355,24',
-    timestamp: '05:30:21'
-  },
-  {
-    id: 10,
-    symbol: 'wQWE',
-    price: <StyledPrice>$4.12</StyledPrice>,
-    movement: '813223422',
-    volume: '201,355,24',
-    timestamp: '05:30:21'
-  },
-  ]
+  [
+    {
+      id: 8,
+      symbol: 'wQWE',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21',
+    },
+    {
+      id: 9,
+      symbol: 'wQWE',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21',
+    },
+    {
+      id: 10,
+      symbol: 'wQWE',
+      price: <StyledPrice>$4.12</StyledPrice>,
+      movement: '813223422',
+      volume: '201,355,24',
+      timestamp: '05:30:21',
+    },
+  ],
 ];
