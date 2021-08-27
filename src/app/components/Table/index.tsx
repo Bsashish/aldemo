@@ -1,13 +1,17 @@
-import PropTypes from 'prop-types';
+import { ReactElement } from 'react';
 import { Table } from 'reactstrap';
 import styled from 'styled-components';
+import { NoData } from '../NoDataComponent';
 
-const StyledTable = styled(Table).attrs(() => ({ responsive: true }))`
-  min-width: 550px;
+const StyledTable = styled(Table).attrs({
+  responsive: true,
+  hover: true,
+})`
+  min-width: 650px;
 
   td,
   th {
-    padding: 16px;
+    padding: 1em;
     border-color: ${({ theme }) => theme.colors.midGrey} !important;
     letter-spacing: 1.2px;
   }
@@ -32,15 +36,33 @@ const StyledDiv = styled.div`
   margin: 24px auto;
   width: 100%;
 `;
+interface Row {
+  rowProps?: object;
+  [key: string]: any;
+}
+interface Column {
+  title: string | any;
+  field?: string;
+  columnProps?: object;
+  renderCell?: (row: Row) => ReactElement;
+}
+interface ITableProps {
+  columns: Column[];
+  data: Row[];
+}
 
-const CustomTable = ({ columns, data }) => {
+const CustomTable = ({ columns, data }: ITableProps) => {
+  if (data.length === 0) {
+    return <NoData />;
+  }
+
   return (
     <StyledDiv>
       <StyledTable>
         <thead>
           <tr>
             {columns.map(column => (
-              <th key={column.field} style={column.style || {}}>
+              <th key={column.field} {...(column.columnProps ?? {})}>
                 {column.title}
               </th>
             ))}
@@ -49,10 +71,14 @@ const CustomTable = ({ columns, data }) => {
         <tbody>
           {/* TODO: Update the key from index to something like id */}
           {data.map((item, index) => (
-            <tr key={index}>
+            <tr key={index} {...(item.rowProps || {})}>
               {/* TODO: Update the key from index to something like id */}
               {columns.map((column, index) => (
-                <td key={index}>{item[column.field]}</td>
+                <td key={index}>
+                  {column.field
+                    ? item[column.field]
+                    : column.renderCell && column.renderCell(item)}
+                </td>
               ))}
             </tr>
           ))}
@@ -60,11 +86,6 @@ const CustomTable = ({ columns, data }) => {
       </StyledTable>
     </StyledDiv>
   );
-};
-
-CustomTable.propTypes = {
-  columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default CustomTable;

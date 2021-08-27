@@ -1,4 +1,6 @@
 export { Title } from './Title';
-export { Toggle } from './Toggle';
+export { Tabs } from './Tabs';
 export { AlertMessage } from './AlertMessage';
 export { SettingModal } from './modal';
+export { ProfileDropdown } from './ProfileDropdown';
+export { IconButton } from './IconButton';

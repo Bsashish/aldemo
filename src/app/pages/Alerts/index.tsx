@@ -1,9 +1,24 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
-import { Toggle } from 'app/components/common/Toggle';
+import { Tabs } from 'app/components/common/Tabs';
 import { Title } from '../../components/common/Title';
 import CustomTable from 'app/components/Table';
+
+export const Alerts = (): JSX.Element => {
+  return (
+    <div className="mx-4">
+      <Title title="Alerts" />
+      <Tabs
+        tabs={tabs}
+        minWidthInContent={'initial'}
+        render={(index: number): JSX.Element => {
+          return <CustomTable columns={colums} data={data[index]} />;
+        }}
+      />
+      <ReactTooltip id="tooltip" place="bottom" />
+    </div>
+  );
+};
 
 export const StyledTooltip = styled.div`
   width: 20px;
@@ -29,61 +44,77 @@ const StyledPrice = styled.div`
   color: ${({ theme }) => theme.colors.green};
 `;
 
-export const Alerts = () => {
-  const [current, setCurrent] = useState('Pre Market');
+const tabs = [
+  {
+    id: 0,
+    name: 'Pre Market',
+    type: 'Pre',
+  },
+  {
+    id: 1,
+    name: 'Intraday',
+    type: 'In',
+  },
+  {
+    id: 2,
+    name: 'Post Market',
+    type: 'Post',
+  },
+];
 
-  const colums = [
-    {
-      title: '#',
-      field: 'id',
-      // style: {
-      //   width: '220px',
-      // },
-    },
-    {
-      title: 'Symbol',
-      field: 'symbol',
-    },
-    {
-      title: 'Price',
-      field: 'price',
-    },
-    {
-      title: (
-        <div className="d-flex">
-          <StyledTitle>movement</StyledTitle>&nbsp;
-          <StyledTooltip data-for="tooltip" data-tip="movement">
-            i
-          </StyledTooltip>
-        </div>
-      ),
-      field: 'movement',
-    },
-    {
-      title: (
-        <div className="d-flex">
-          <StyledTitle>volume</StyledTitle>&nbsp;
-          <StyledTooltip data-for="tooltip" data-tip="volume">
-            i
-          </StyledTooltip>
-        </div>
-      ),
-      field: 'volume',
-    },
-    {
-      title: (
-        <div className="d-flex">
-          <StyledTitle>timestamp</StyledTitle>&nbsp;
-          <StyledTooltip data-for="tooltip" data-tip="timestamp">
-            i
-          </StyledTooltip>
-        </div>
-      ),
-      field: 'timestamp',
-    },
-  ];
+const colums = [
+  {
+    title: '#',
+    field: 'id',
+    // style: {
+    //   width: '220px',
+    // },
+  },
+  {
+    title: 'Symbol',
+    field: 'symbol',
+  },
+  {
+    title: 'Price',
+    field: 'price',
+  },
+  {
+    title: (
+      <div className="d-flex">
+        <StyledTitle>movement</StyledTitle>&nbsp;
+        <StyledTooltip data-for="tooltip" data-tip="movement">
+          i
+        </StyledTooltip>
+      </div>
+    ),
+    field: 'movement',
+  },
+  {
+    title: (
+      <div className="d-flex">
+        <StyledTitle>volume</StyledTitle>&nbsp;
+        <StyledTooltip data-for="tooltip" data-tip="volume">
+          i
+        </StyledTooltip>
+      </div>
+    ),
+    field: 'volume',
+  },
+  {
+    title: (
+      <div className="d-flex">
+        <StyledTitle>timestamp</StyledTitle>&nbsp;
+        <StyledTooltip data-for="tooltip" data-tip="timestamp">
+          i
+        </StyledTooltip>
+      </div>
+    ),
+    field: 'timestamp',
+  },
+];
 
-  const data = [
+const data = [
+  [
     {
       id: 1,
       symbol: 'silk',
@@ -108,6 +139,8 @@ export const Alerts = () => {
       volume: '201,355,24',
       timestamp: '05:30:21',
     },
+  ],
+  [
     {
       id: 4,
       symbol: 'wQWE',
@@ -140,6 +173,8 @@ export const Alerts = () => {
       volume: '201,355,24',
       timestamp: '05:30:21',
     },
+  ],
+  [
     {
       id: 8,
       symbol: 'wQWE',
@@ -164,18 +199,5 @@ export const Alerts = () => {
       volume: '201,355,24',
       timestamp: '05:30:21',
     },
-  ];
-
-  return (
-    <div className="mx-4">
-      <Title title="Alerts" />
-      <Toggle
-        items={['Pre Market', 'Intraday', 'Post Market']}
-        current={current}
-        setCurrent={setCurrent}
-      />
-      <CustomTable columns={colums} data={data} />
-      <ReactTooltip id="tooltip" place="bottom" />
-    </div>
-  );
-};
+  ],
+];

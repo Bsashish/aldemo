@@ -127,6 +127,18 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
 
+  .table-row {
+    button {
+      visibility: hidden;
+    }
+
+    &:hover {
+      button {
+        visibility: visible;
+      }
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     body {
       overflow: hidden;

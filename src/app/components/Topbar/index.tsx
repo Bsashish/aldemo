@@ -1,41 +1,10 @@
-import React, { useState } from 'react';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap';
 import styled, { useTheme } from 'styled-components';
 import colors from 'utils/colors';
-import { AlertMessage } from '../common';
+import { AlertMessage, ProfileDropdown } from '../common';
 
-const StyledDropdownToggle = styled(DropdownToggle)`
-  display: flex;
-  align-items: center;
-  background-color: ${colors.offWhite} !important;
-  border: 0 !important;
-  color: ${colors.darkBlue} !important;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 120%;
-  box-shadow: none !important;
-  height: 65px;
-  padding: 0px;
-
-  img {
-    border-radius: 10px;
-    height: 40px;
-    margin: 10px;
-  }
-
-  p {
-    margin: 0;
-
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
-`;
+import ProfileInActive from 'assets/images/ProfileInActive.png'
+import ProfileActive from 'assets/images/ProfileActive.png'
+import Logout from 'assets/images/Logout.png'
 
 const Header = styled.div`
   width: 100%;
@@ -54,29 +23,6 @@ const Header = styled.div`
     padding: 0 10px;
   }
 `;
-
-const StyledDropdownMenu = styled(DropdownMenu)`
-  right: 0;
-  top: 65px;
-`;
-
-const DropDown = props => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen(prevState => !prevState);
-
-  return (
-    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <StyledDropdownToggle caret={false}>
-        <img src="https://picsum.photos/45" alt="profile" />
-        <p>Myroslav &or;</p>
-      </StyledDropdownToggle>
-      <StyledDropdownMenu>
-        <DropdownItem>Myroslav</DropdownItem>
-      </StyledDropdownMenu>
-    </Dropdown>
-  );
-};
 
 const StyleButton = styled.button`
   border: 0;
@@ -104,9 +50,22 @@ const Topbar = ({
         value="2,000"
         valueColor={colors.green}
       />
-      <DropDown />
+      <ProfileDropdown items={items} />
     </Header>
   );
 };
 
 export default Topbar;
+
+const items = [
+  {
+    text: 'Profile',
+    iconActive: ProfileActive,
+    iconInActive: ProfileInActive
+  },
+  {
+    text: 'Logout',
+    iconActive: Logout,
+    iconInActive: Logout
+  }
+]
