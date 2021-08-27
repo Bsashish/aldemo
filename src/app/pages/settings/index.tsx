@@ -193,7 +193,7 @@ const SettingsPage = () => {
               )}
             </div>
           </StyledUncontrolledCollapse>
-                {/* Alert Setting */}
+          {/* Alert Setting */}
           <CollapseTitle
             id="AlertToggler"
             // setIsSelect('AlertToggler')}
@@ -216,7 +216,7 @@ const SettingsPage = () => {
             <AlertSettings />
           </StyledUncontrolledCollapse>
 
-                {/* Halt Setting */}
+          {/* Halt Setting */}
           <CollapseTitle
             id="HaltToggler"
             // onClick={() => setIsSelect('HaltToggler')}

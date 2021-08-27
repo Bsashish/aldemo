@@ -89,8 +89,11 @@ const StyledTooltip = styled.span`
   margin-left: 10px;
 `;
 
-const AlertSettingComponent = ({ element }) => {
+const DivStyle = styled.div`
+  padding-bottom: 20px;
+`;
 
+const AlertSettingComponent = ({ element }) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isChecked, setIsChecked] = useState(true);
   const handleChecked = () => {
@@ -100,7 +103,7 @@ const AlertSettingComponent = ({ element }) => {
   return (
     <div className="mx-4">
       <div>
-        <div style={{ paddingBottom: '20px' }}>
+        <DivStyle>
           <Badges isColor={!isUpdate}>
             {isUpdate ? 'Customized' : ' Default'}
           </Badges>
@@ -121,7 +124,7 @@ const AlertSettingComponent = ({ element }) => {
               />
             </StyledTooltip>
           </SwitchSpan>
-        </div>
+        </DivStyle>
         <PropertyStyle>
           <Div>
             <Property>Volume:</Property>
