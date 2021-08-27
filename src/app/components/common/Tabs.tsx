@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Col, Row } from 'reactstrap';
 import styled from 'styled-components';
 
 type SelectedTextType = {
@@ -8,11 +9,12 @@ type SelectedTextType = {
 
 interface IProps {
   tabs: any,
-  render: (index: number) => JSX.Element
+  render: (index: number) => JSX.Element,
+  rightSection?: () => JSX.Element,
   minWidthInContent?: string
 }
 
-export const Tabs = ({ tabs, render, minWidthInContent }: IProps) => {
+export const Tabs = ({ tabs, render, minWidthInContent, rightSection }: IProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   // to set first tab as active
@@ -22,23 +24,30 @@ export const Tabs = ({ tabs, render, minWidthInContent }: IProps) => {
 
   return (
     <div className="d-flex flex-column">
-      <StyledTabs
-        className="btn-group btn-group-Tabs bg-white"
-        data-Tabs="buttons"
-      >
-        {tabs.map(({ id, name }, index) => (
-          <>
-            <SelectedText
-              isActive={currentIndex}
-              index={id}
-              onClick={() => setCurrentIndex(id)}
-            >
-              {name}
-            </SelectedText>
-            {tabs.length - 1 !== index && <StyledVerticalLine />}
-          </>
-        ))}
-      </StyledTabs>
+      <Row className="align-items-center">
+        <Col sm={12} md={12} lg={12} xl={6}>
+          <StyledTabs
+            className="btn-group btn-group-Tabs bg-white"
+            data-Tabs="buttons"
+          >
+            {tabs.map(({ id, name }, index) => (
+              <>
+                <SelectedText
+                  isActive={currentIndex}
+                  index={id}
+                  onClick={() => setCurrentIndex(id)}
+                >
+                  {name}
+                </SelectedText>
+                {tabs.length - 1 !== index && <StyledVerticalLine />}
+              </>
+            ))}
+          </StyledTabs>
+        </Col>
+        <Col sm={12} md={12} lg={12} xl={6} className="d-xl-flex justify-content-end">
+          {rightSection && rightSection()}
+        </Col>
+      </Row>
       <StyledTabContent minWidthInContent={minWidthInContent}>{render(currentIndex)}</StyledTabContent>
     </div>
   )
@@ -108,7 +117,6 @@ const StyledTabs = styled.div`
   display: flex;
   align-items: center;
   border-radius: 12px;
-  margin-bottom: ${({ theme }) => theme.spacing.xl };
 
   @media screen and (max-width: 768px) {
     width: 100%;
