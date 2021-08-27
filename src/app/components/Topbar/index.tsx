@@ -5,13 +5,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import colors from 'utils/colors';
-import { AlertMessage } from '../common';
 
 const StyledDropdownToggle = styled(DropdownToggle)`
-  display: flex;
-  align-items: center;
   background-color: ${colors.offWhite} !important;
   border: 0 !important;
   color: ${colors.darkBlue} !important;
@@ -27,37 +24,20 @@ const StyledDropdownToggle = styled(DropdownToggle)`
     height: 40px;
     margin: 10px;
   }
-
-  p {
-    margin: 0;
-
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
 `;
 
 const Header = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 65px;
   background: ${colors.offWhite};
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   p {
     margin: 0;
   }
-
-  @media screen and (max-width: 768px) {
-    padding: 0 10px;
-  }
-`;
-
-const StyledDropdownMenu = styled(DropdownMenu)`
-  right: 0;
-  top: 65px;
 `;
 
 const DropDown = props => {
@@ -69,41 +49,19 @@ const DropDown = props => {
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <StyledDropdownToggle caret={false}>
         <img src="https://picsum.photos/45" alt="profile" />
-        <p>Myroslav &or;</p>
+        Myroslav &or;
       </StyledDropdownToggle>
-      <StyledDropdownMenu>
+      <DropdownMenu>
         <DropdownItem>Myroslav</DropdownItem>
-      </StyledDropdownMenu>
+      </DropdownMenu>
     </Dropdown>
   );
 };
 
-const StyleButton = styled.button`
-  border: 0;
-  border-radius: 4px;
-`;
-
-const Topbar = ({
-  setIsOpen,
-}: {
-  setIsOpen: (isOpen: boolean | ((_: boolean) => boolean)) => void;
-}) => {
-  const { colors } = useTheme();
-
+const Topbar = () => {
   return (
     <Header>
-      {/* TODO: Change with ham burger menu icon */}
-      <StyleButton
-        className="sidebar-sm"
-        onClick={() => setIsOpen((prev: boolean) => !prev)}
-      >
-        =
-      </StyleButton>
-      <AlertMessage
-        text="ALERT CREDITS"
-        value="2,000"
-        valueColor={colors.green}
-      />
+      <p>You are credited with 2,000 Alerts</p>
       <DropDown />
     </Header>
   );

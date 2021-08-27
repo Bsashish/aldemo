@@ -10,6 +10,8 @@ const colors = {
   midGrey: '#E6E6E6',
   lightGrey: '#F9F9FC',
   yellow: '#F2C94C',
+  tabSelected: '',
+  tabTitleHover: '',
 };
 
 export default colors;

@@ -60,31 +60,3 @@ const SomeDiv = styled.div`
   `}
 `;
 */
-
-// types for theme
-declare module "styled-components" {
-  export interface DefaultTheme {
-    colors: {
-      white: string;
-      offWhite: string;
-      black: string;
-      green: string;
-      lightGreen: string;
-      roseRed: string;
-      darkBlue: string;
-      darkGrey: string;
-      midGrey: string;
-      lightGrey: string;
-      yellow: string;
-    },
-    spacing: {
-      small: string;
-      normal: string;
-      medium: string;
-      large: string;
-      xl: string;
-      xxl: string;
-      huge: string;
-    }
-  }
-}

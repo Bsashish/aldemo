@@ -38,18 +38,11 @@ export const GlobalStyle = createGlobalStyle`
 
   // Side bar styles
   .sidebar {
-    width: 100%;
+    min-width: 225px;
+    max-width: 225px;
     background: ${colors.white};
+    margin-left: -225px;
     transition: all 0.5s;
-    @media only screen and (max-width: 768px) {
-      position: absolute;
-      z-index: 1501;
-      margin-left: -100%;
-    }
-
-    @media only screen and (min-width: 1024px) {
-      width: 225px;
-    }
   }
 
   .sidebar.is-open {
@@ -64,7 +57,6 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
   }
 
   .menu-open {
@@ -123,17 +115,13 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
   }
 
-  .sidebar-sm {
-    display: none;
-  }
-
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 500px) {
     body {
       overflow: hidden;
     }
 
-    .sidebar-sm {
-      display: block;
+    .content.is-open {
+      margin-left: 100%;
     }
 
     .sidebar.is-open {
