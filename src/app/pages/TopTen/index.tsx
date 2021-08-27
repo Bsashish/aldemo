@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import CustomTable from 'app/components/Table';
-import { Title, Toggle } from 'app/components/common';
+import { Title, Tabs } from 'app/components/common';
 import CustomPopover from 'app/components/Popover';
 
 const StyledDiv = styled.div`
@@ -231,11 +231,11 @@ export const TopTen = () => {
   return (
     <StyledDiv>
       <Title title="Top Ten" />
-      <Toggle
+      {/* <Tabs
         items={['Top Ten Gains', 'Top Ten Shorts', 'Top Ten Swings']}
         current={current}
         setCurrent={setCurrent}
-      />
+      /> */}
       <StyledFilterDiv>
         <StyledButton id="PopoverClick" type="button">
           Issue Class
