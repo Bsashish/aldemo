@@ -8,6 +8,6 @@ const StyledTitle = styled.h1`
   margin: 1.5rem 0;
 `;
 
-export const Title = ({ title }) => {
-  return <StyledTitle>{title}</StyledTitle>;
+export const Title = ({ title, id = '' }) => {
+  return <StyledTitle id={id}>{title}</StyledTitle>;
 };
