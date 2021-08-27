@@ -14,7 +14,7 @@ import { AlertSettings } from './alert';
 import HaltsSettings from './HaltsSetting';
 import images from 'utils/images';
 
-const StyledTitle1 = styled.h1`
+const CollapseTitle = styled.h1`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -52,7 +52,7 @@ const StyledRadio = styled(Input).attrs(() => ({ type: 'radio' }))`
   }
 `;
 
-const StyledLabel1 = styled(Label)`
+const StyledLabel = styled(Label)`
   font-size: large;
   font-weight: 500;
   line-height: 1.5em;
@@ -73,7 +73,7 @@ const StyledHr = styled.hr<ActiveProps>`
   }
 `;
 
-const StyledDiv1 = styled.div`
+const RadioContainerDiv = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 30px;
@@ -103,9 +103,9 @@ const Icon = styled.img<ActiveProps>`
 `;
 
 const SettingsPage = () => {
-  const [isSelect, setIsSelect] = useState('');
+  const [SettingSelect, setSettingSelect] = useState('');
   const [receiveNotification, SetReceiveNotification] = useState('sms');
-  const [modal, setModal] = useState(false);
+  const [settingModal, setSettingModal] = useState(false);
 
   return (
     <StyledDiv>
@@ -113,11 +113,13 @@ const SettingsPage = () => {
 
       <StyledCard>
         <StyledCardBody>
-          <StyledTitle1
+          <CollapseTitle
             // title="Where to Receive Notifications"
             id="NotifierToggler"
             onClick={() =>
-              setIsSelect(prev => (prev === 'NotifierToggler' ? '' : 'NotifierToggler'))
+              setSettingSelect(prev =>
+                prev === 'NotifierToggler' ? '' : 'NotifierToggler',
+              )
             }
           >
             <VectorIcon src={images.Vector} alt="vector" />
@@ -125,14 +127,14 @@ const SettingsPage = () => {
             <Icon
               src={images.Path}
               alt="logo"
-              className={isSelect === 'NotifierToggler' ? 'rotate' : ''}
+              className={SettingSelect === 'NotifierToggler' ? 'rotate' : ''}
             />
-          </StyledTitle1>
-          <StyledHr isActive={isSelect === 'NotifierToggler'} />
+          </CollapseTitle>
+          <StyledHr isActive={SettingSelect === 'NotifierToggler'} />
           <StyledUncontrolledCollapse toggler="#NotifierToggler">
-            <StyledDiv1>
+            <RadioContainerDiv>
               <div>
-                <StyledLabel1 check>
+                <StyledLabel check>
                   <StyledRadio
                     type="radio"
                     name="radio1"
@@ -141,8 +143,8 @@ const SettingsPage = () => {
                     onClick={e => SetReceiveNotification(e.target.value)}
                   />{' '}
                   SMS
-                </StyledLabel1>
-                <StyledLabel1 check>
+                </StyledLabel>
+                <StyledLabel check>
                   <StyledRadio
                     type="radio"
                     name="radio1"
@@ -150,12 +152,14 @@ const SettingsPage = () => {
                     onClick={e => SetReceiveNotification(e.target.value)}
                   />{' '}
                   Email
-                </StyledLabel1>
+                </StyledLabel>
               </div>
               <div>
-                <StyledButton onClick={() => setModal(true)}>Save</StyledButton>
+                <StyledButton onClick={() => setSettingModal(true)}>
+                  Save
+                </StyledButton>
               </div>
-            </StyledDiv1>
+            </RadioContainerDiv>
             <div>
               {receiveNotification === 'email' && (
                 <span style={{ color: colors.darkGrey }}>
@@ -189,12 +193,14 @@ const SettingsPage = () => {
               )}
             </div>
           </StyledUncontrolledCollapse>
-
-          <StyledTitle1
+                {/* Alert Setting */}
+          <CollapseTitle
             id="AlertToggler"
             // setIsSelect('AlertToggler')}
             onClick={() =>
-              setIsSelect(prev => (prev === 'AlertToggler' ? '' : 'AlertToggler'))
+              setSettingSelect(prev =>
+                prev === 'AlertToggler' ? '' : 'AlertToggler',
+              )
             }
           >
             <VectorIcon src={images.Vector} alt="vector" />
@@ -202,19 +208,22 @@ const SettingsPage = () => {
             <Icon
               src={images.Path}
               alt="logo"
-              className={isSelect === 'AlertToggler' ? 'rotate' : ''}
+              className={SettingSelect === 'AlertToggler' ? 'rotate' : ''}
             />
-          </StyledTitle1>
-          <StyledHr isActive={isSelect === 'AlertToggler'} />
+          </CollapseTitle>
+          <StyledHr isActive={SettingSelect === 'AlertToggler'} />
           <StyledUncontrolledCollapse toggler="#AlertToggler">
             <AlertSettings />
           </StyledUncontrolledCollapse>
 
-          <StyledTitle1
+                {/* Halt Setting */}
+          <CollapseTitle
             id="HaltToggler"
             // onClick={() => setIsSelect('HaltToggler')}
             onClick={() =>
-              setIsSelect(prev => (prev === 'HaltToggler' ? '' : 'HaltToggler'))
+              setSettingSelect(prev =>
+                prev === 'HaltToggler' ? '' : 'HaltToggler',
+              )
             }
           >
             <VectorIcon src={images.Vector} alt="vector" />
@@ -222,17 +231,17 @@ const SettingsPage = () => {
             <Icon
               src={images.Path}
               alt="logo"
-              className={isSelect === 'HaltToggler' ? 'rotate' : ''}
+              className={SettingSelect === 'HaltToggler' ? 'rotate' : ''}
             />
-          </StyledTitle1>
-          <StyledHr isActive={isSelect === 'HaltToggler'} />
+          </CollapseTitle>
+          <StyledHr isActive={SettingSelect === 'HaltToggler'} />
           <StyledUncontrolledCollapse toggler="#HaltToggler">
             <HaltsSettings />
           </StyledUncontrolledCollapse>
         </StyledCardBody>
       </StyledCard>
 
-      <SettingModal setModal={setModal} modal={modal} />
+      <SettingModal setModal={setSettingModal} modal={settingModal} />
     </StyledDiv>
   );
 };

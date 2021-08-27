@@ -69,18 +69,18 @@ const Links = styled.p`
 `;
 
 const StyledTooltip = styled.span`
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${({ theme }) => theme.colors.white};
-    background-color: ${({ theme }) => theme.colors.darkGrey};
-    font-style: italic;
-    text-transform: lowercase;
-    border-radius: 50%;
-    font-size: smaller;
-    margin-left: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.darkGrey};
+  font-style: italic;
+  text-transform: lowercase;
+  border-radius: 50%;
+  font-size: smaller;
+  margin-left: 10px;
 `;
 
 const DivFlex = styled.div`
@@ -88,18 +88,20 @@ const DivFlex = styled.div`
 `;
 
 const HaltsSettings = () => {
-  const [update, setUpdate] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   return (
     <StyledDiv>
       <DivContainer>
-        <Badges isColor={!update}>{update ? 'Customized' : ' default'}</Badges>
+        <Badges isColor={!isUpdate}>
+          {isUpdate ? 'Customized' : ' default'}
+        </Badges>
         <Span>Intraday Halts </Span>
         <span style={{ float: 'right' }}>
           <Switch
-            checked={checked}
-            onChange={() => setChecked(!checked)}
+            checked={isChecked}
+            onChange={() => setIsChecked(!isChecked)}
             uncheckedIcon={<SwitchStyle>OFF</SwitchStyle>}
             checkedIcon={<SwitchStyle>ON</SwitchStyle>}
             className="react-switch"
@@ -109,10 +111,10 @@ const HaltsSettings = () => {
       </DivContainer>
       <Div>
         <DivFlex>
-            <Property>Direction</Property>
-            <StyledTooltip data-for="tooltip" data-tip="Direction">
-                i
-            </StyledTooltip>
+          <Property>Direction</Property>
+          <StyledTooltip data-for="tooltip" data-tip="Direction">
+            i
+          </StyledTooltip>
         </DivFlex>
         <div>
           <span>Upwards</span>
@@ -121,10 +123,10 @@ const HaltsSettings = () => {
       <HorizontalLine />
       <Div>
         <DivFlex>
-            <Property>Volume</Property>
-            <StyledTooltip data-for="tooltip" data-tip="Volume">
-                i
-            </StyledTooltip>
+          <Property>Volume</Property>
+          <StyledTooltip data-for="tooltip" data-tip="Volume">
+            i
+          </StyledTooltip>
         </DivFlex>
         <div>
           <span>50,000</span>
@@ -132,21 +134,20 @@ const HaltsSettings = () => {
       </Div>
       <Links
         onClick={() => {
-          setUpdate(!update);
+          setIsUpdate(!isUpdate);
         }}
       >
-        {update ? 'Update' : 'Customize'}
+        {isUpdate ? 'Update' : 'Customize'}
       </Links>
       <ReactTooltip
-          id="tooltip"
-          className="tooltip"
-          place="bottom"
-          textColor="#FFFFFF"
-          backgroundColor="#7C8DA6"
+        id="tooltip"
+        className="tooltip"
+        place="bottom"
+        textColor="#FFFFFF"
+        backgroundColor="#7C8DA6"
       />
     </StyledDiv>
   );
 };
-
 
 export default HaltsSettings;

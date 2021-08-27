@@ -11,7 +11,6 @@ const CloseButton = styled.span`
 //Modal modal-content
 const ModalComp = styled(Modal)`
   border-radius: 50px;
-  / width: 300vw; /
 `;
 
 const ModalComBody = styled(ModalBody)`
@@ -51,6 +50,8 @@ const ModalMessage = styled.p`
 const ModalStyle = styled.div`
   padding: 0rem 2rem 2rem 2rem;
 `;
+
+
 export const SettingModal = ({ modal, setModal }) => {
   const toggle = () => setModal(!modal);
   return (

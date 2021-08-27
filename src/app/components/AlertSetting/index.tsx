@@ -90,17 +90,19 @@ const StyledTooltip = styled.span`
 `;
 
 const AlertSettingComponent = ({ element }) => {
-  const [update, setUpdate] = useState(false);
-  const [checked, setChecked] = useState(true);
+
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
   const handleChecked = () => {
-    setChecked(!checked);
+    setIsChecked(!isChecked);
   };
+
   return (
     <div className="mx-4">
       <div>
         <div style={{ paddingBottom: '20px' }}>
-          <Badges isColor={!update}>
-            {update ? 'Customized' : ' Default'}
+          <Badges isColor={!isUpdate}>
+            {isUpdate ? 'Customized' : ' Default'}
           </Badges>
           <AlertItem>{`${element.alertName} Alerts`} </AlertItem>
 
@@ -110,7 +112,7 @@ const AlertSettingComponent = ({ element }) => {
               data-tip="You've useed up your alerts ceadits Buy more to continue "
             >
               <Switch
-                checked={checked}
+                checked={isChecked}
                 onChange={handleChecked}
                 uncheckedIcon={<SwitchStyle>OFF</SwitchStyle>}
                 checkedIcon={<SwitchStyle>ON</SwitchStyle>}
@@ -146,10 +148,10 @@ const AlertSettingComponent = ({ element }) => {
         <div>
           <Links
             onClick={() => {
-              setUpdate(!update);
+              setIsUpdate(!isUpdate);
             }}
           >
-            {update ? 'Update' : 'Customize'}
+            {isUpdate ? 'Update' : 'Customize'}
           </Links>
         </div>
         <HorizontalLine />
