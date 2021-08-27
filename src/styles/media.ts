@@ -62,7 +62,7 @@ const SomeDiv = styled.div`
 */
 
 // types for theme
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       white: string;
@@ -86,6 +86,6 @@ declare module "styled-components" {
       xl: string;
       xxl: string;
       huge: string;
-    }
+    };
   }
 }
