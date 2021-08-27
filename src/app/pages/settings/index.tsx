@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 import styled from 'styled-components';
 import colors from 'utils/colors';
-import { AlertSettings } from './alert';
+import { AlertSettings } from './Alert';
 import HaltsSettings from './HaltsSetting';
 import images from 'utils/images';
 
@@ -43,11 +43,10 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledRadio = styled(Input).attrs(() => ({ type: 'radio' }))`
-  //color: ${({ theme }) => theme.colors.green};
+  
   border: 1px solid ${({ theme }) => theme.colors.darkGrey};
 
   &:checked {
-    / background-color: ${({ theme }) => theme.colors.green};  /
     border: 1px solid ${({ theme }) => theme.colors.green};
   }
 `;
@@ -82,7 +81,6 @@ const RadioContainerDiv = styled.div`
 
 //UncontrolledCollapse
 const StyledUncontrolledCollapse = styled(UncontrolledCollapse)`
-  / border-top: 2px solid ${({ theme }) => theme.colors.green}; /
   padding-bottom: 30px;
 `;
 
@@ -114,7 +112,6 @@ const SettingsPage = () => {
       <StyledCard>
         <StyledCardBody>
           <CollapseTitle
-            // title="Where to Receive Notifications"
             id="NotifierToggler"
             onClick={() =>
               setSettingSelect(prev =>
@@ -196,7 +193,6 @@ const SettingsPage = () => {
           {/* Alert Setting */}
           <CollapseTitle
             id="AlertToggler"
-            // setIsSelect('AlertToggler')}
             onClick={() =>
               setSettingSelect(prev =>
                 prev === 'AlertToggler' ? '' : 'AlertToggler',
@@ -219,7 +215,6 @@ const SettingsPage = () => {
           {/* Halt Setting */}
           <CollapseTitle
             id="HaltToggler"
-            // onClick={() => setIsSelect('HaltToggler')}
             onClick={() =>
               setSettingSelect(prev =>
                 prev === 'HaltToggler' ? '' : 'HaltToggler',
