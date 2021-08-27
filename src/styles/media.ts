@@ -76,6 +76,7 @@ declare module "styled-components" {
       midGrey: string;
       lightGrey: string;
       yellow: string;
+      peach: string;
     },
     spacing: {
       small: string;

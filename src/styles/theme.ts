@@ -11,6 +11,7 @@ const theme = {
     midGrey: '#E6E6E6',
     lightGrey: '#F9F9FC',
     yellow: '#F2C94C',
+    peach: '#FAB9A2',
   },
   spacing: {
     small: '4px',

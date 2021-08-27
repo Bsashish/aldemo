@@ -10,6 +10,7 @@ const colors = {
   midGrey: '#E6E6E6',
   lightGrey: '#F9F9FC',
   yellow: '#F2C94C',
+  peach: '#FAB9A2',
 };
 
 export default colors;
