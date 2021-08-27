@@ -1,38 +1,40 @@
 import { useState } from 'react';
 import { Title } from '../../components/common/Title';
 import styled from "styled-components";
-import { Badge,CustomInput } from 'reactstrap';
+import { Badge } from 'reactstrap';
 
 type BadgeProps = {
     isColor?: boolean;
 }
 
 const Badges = styled(Badge) <BadgeProps>`
-background: ${({ theme, isColor }) => isColor ? theme.colors.darkBlue : theme.colors.green};
-border-radius: .7rem;
+    background: ${({ theme, isColor }) => isColor ? theme.colors.darkBlue : theme.colors.green};
+    border-radius: .7rem;
 `;
 
 const Span = styled.span`
-color:darkblue;
-margin-left:40px;
+    color:${({ theme }) => theme.colors.darkBlue};
+    margin-left:40px;
 `;
 
 const Div = styled.div`
-display:flex;
-justify-content: space-between;
-padding-bottom: 20px;
-
+    display:flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
 `;
 
 const Value = styled.span`
-color:darkblue;
-margin-left: 10px;
+    color:${({ theme }) => theme.colors.darkBlue};
+    margin-left: 10px;
+`;
+const Property = styled.span`
+    color:${({ theme }) => theme.colors.darkGrey};
 `;
 const Links = styled.p`
-color:green;
-font-weight: bold;
-text-decoration: underline;
-display: inline;
+    color:${({ theme }) => theme.colors.green};
+    font-weight: bold;
+    text-decoration: underline;
+    display: inline;
 `;
 const CheckBoxWrapper = styled.div`
   position: relative;
@@ -78,14 +80,13 @@ const CheckBox = styled.input`
   }
 `;
 const HorizontalLine = styled.hr`
-background-color: #fff;
-background-image: linear-gradient(to right, #bcbaba 68%, rgb(167 163 163 / 0%) 0%);
-background-position: bottom;
-background-size: 25px 14px;
-background-repeat: repeat-x;
+    background-color: #fff;
+    background-image: linear-gradient(to right, #bcbaba 68%, rgb(167 163 163 / 0%) 0%);
+    background-position: bottom;
+    background-size: 25px 14px;
+    background-repeat: repeat-x;
 `;
 export const AlertSettings = () => {
-    const [defaults, setDefaults] = useState(true);
     const [update, setUpdate] = useState(false);
     let element = [
         {
@@ -112,7 +113,6 @@ export const AlertSettings = () => {
     return (
         <div className="mx-4">
             {element.map((item) => (
-
                 <div>
                     <div style={{ paddingBottom: '20px' }}>
                         <Badges isColor={!update}>{update ? "Customized":" default" }</Badges>
@@ -122,21 +122,19 @@ export const AlertSettings = () => {
                                 <CheckBox id="checkbox" type="checkbox" />
                                 <CheckBoxLabel htmlFor="checkbox" />
                             </CheckBoxWrapper>
-                            {/* <CustomInput type="switch" id="exampleCustomSwitch" name="customSwitch" /> */}
-
                         </span>
                     </div>
                     <Div>
                         <div>
-                            <span>volume:</span>
+                            <Property>Volume:</Property>
                             <Value>{item.volume}</Value>
                         </div>
                         <div>
-                            <span>Movement Threshold:</span>
+                            <Property>Movement Threshold:</Property>
                             <Value>{item.movementThreshold}</Value>
                         </div>
                         <div>
-                            <span>Minimum Movement:</span>
+                            <Property>Minimum Movement:</Property>
                             <Value>{item.minimumMovement}</Value>
                         </div>
                     </Div>
