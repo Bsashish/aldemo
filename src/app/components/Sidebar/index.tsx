@@ -83,7 +83,7 @@ const StyledBanner = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100%;
+  //height: 100%;
   min-height: 320px;
   width: 100%;
   margin: auto;
@@ -118,7 +118,15 @@ const StyledBanner = styled.div`
       border-radius: 12px;
     }
 
+    @media (max-width: 768px) {
+      transform: translate(180%, -80%);
+    }
+
     @media (max-width: 425px) {
+      transform: translate(60%, -80%);
+    }
+
+    @media (max-width: 375px) {
       transform: translate(40%, -80%);
     }
   }
@@ -166,6 +174,7 @@ const SideBar = ({
               onClick={() => {
                 history.push(link);
                 setActive(link);
+                closeSideBarHandler();
               }}
             >
               <img
