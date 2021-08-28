@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import CustomTable from 'app/components/Table';
 import { Title, Tabs, IconButton } from 'app/components/common';
 import CustomPopover from 'app/components/Popover';
+import images from 'utils/images';
 
 const StyledDiv = styled.div`
   padding: 0 1.5rem;
@@ -233,23 +234,24 @@ const options = [
 const tabs = [
   {
     id: 0,
-    name: 'Pre Market',
-    type: 'Pre',
+    name: 'Top Ten Gains',
+    // type: 'Pre',
   },
   {
     id: 1,
-    name: 'Intraday',
-    type: 'In',
+    name: 'Top Ten Shorts',
+    // type: 'In',
   },
   {
     id: 2,
-    name: 'Post Market',
-    type: 'Post',
+    name: 'Top Ten Swings',
+    // type: 'Post',
   },
 ];
 
 export const TopTen = () => {
   const [issueClassOptions, setIssueClassOptions] = useState(options);
+  const [isIssueClassOpen, setIsIssueClassOpen] = useState(false);
 
   const changeValueHandler = ({ target: { value: searchedValue } }) => {
     if (!searchedValue) {
@@ -293,12 +295,13 @@ export const TopTen = () => {
             >
               <IconButton
                 text="Filter"
-                icon={<div>T</div>}
+                icon={<img src={images.Filter} alt="filter" />}
                 displayRightIcon={false}
                 disabled
+                
               />
-              <IconButton text="Pre Market" icon={<div>T</div>} />
-              <IconButton text="Today" icon={<div>T</div>} />
+              <IconButton text="Pre Market" icon={<img src={images.Clock} alt="pre" />} />
+              <IconButton text="Today" icon={<img src={images.Calender} alt="today" />} />
             </div>
           );
         }}
@@ -306,7 +309,7 @@ export const TopTen = () => {
           return (
             <>
               <StyledFilterDiv>
-                <StyledButton id="PopoverClick" type="button">
+                <StyledButton id="PopoverClick" type="button" onClick={() => setIsIssueClassOpen(!isIssueClassOpen)}>
                   <StyledBadge>
                     {
                       issueClassOptions.filter(({ isChecked }) => isChecked)
@@ -319,6 +322,8 @@ export const TopTen = () => {
                   trigger="legacy"
                   placement="bottom"
                   target="PopoverClick"
+                  isOpen={isIssueClassOpen}
+                  toggle={() => setIsIssueClassOpen(!isIssueClassOpen)}
                 >
                   <StyledSearchInput
                     type="search"

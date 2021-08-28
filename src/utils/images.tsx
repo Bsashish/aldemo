@@ -9,6 +9,14 @@ import SettingsActive from '../assets/images/SettingsActive.png';
 import SettingsInActive from '../assets/images/SettingsInActive.png';
 import LogoSmall from '../assets/images/LogoSmall.png';
 import Expand from '../assets/images/Expand.svg';
+import Help from '../assets/images/help.png';
+import Support from '../assets/images/support.png';
+import Suggestion from '../assets/images/suggestion.png';
+import Tooltip from '../assets/images/tooltip.png';
+import Ads from '../assets/images/ads.png';
+import Clock from '../assets/images/clock.png';
+import Calender from '../assets/images/calender.png';
+import Filter from '../assets/images/filter.png';
 
 const images = {
   Logo,
@@ -22,6 +30,14 @@ const images = {
   SettingsInActive,
   LogoSmall,
   Expand,
+  Help,
+  Support,
+  Suggestion,
+  Tooltip,
+  Ads,
+  Clock,
+  Calender,
+  Filter
 };
 
 export default images;
