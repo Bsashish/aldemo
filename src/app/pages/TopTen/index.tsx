@@ -49,22 +49,16 @@ const StyledBadge = styled(Badge)`
   right: 8px;
 `;
 
-const StyledIncreaseChangedDiv = styled.div`
+const StyledChangedDiv = styled.div`
   color: ${({ theme }) => theme.colors.green};
-
-  &::before {
-    content: '\\2191\\2002';
-    font-size: 20px;
-  }
+  display: flex;
+  align-items: center;
 `;
 
-const StyledDecreaseChangedDiv = styled.div`
-  color: ${({ theme }) => theme.colors.roseRed};
-
-  &::before {
-    content: '\\2193\\2002';
-    font-size: 20px;
-  }
+const StyledChangedImg = styled.img`
+  height: 10px;
+  width: 10px;
+  margin-right: 6px;
 `;
 
 const StyledSearchInput = styled.input`
@@ -150,23 +144,45 @@ const colums = [
   },
 ];
 
+const renderIncreseDescreseComponent = (
+  type: number,
+  value: string,
+): JSX.Element => {
+  // 0 for plus and 1 for minus
+  if (type === 0) {
+    return (
+      <StyledChangedDiv>
+        <StyledChangedImg src={images.Up_Arrow} alt="up" />
+        {value}
+      </StyledChangedDiv>
+    );
+  } else {
+    return (
+      <StyledChangedDiv>
+        <StyledChangedImg src={images.Down_Arrow} alt="up" />
+        {value}
+      </StyledChangedDiv>
+    );
+  }
+};
+
 const data = [
   [
     {
-      id: 1,
+      id: '01',
       symbol: 'silk',
       lastPrice: '$45.12',
-      change: <StyledIncreaseChangedDiv>+45.12</StyledIncreaseChangedDiv>,
+      change: renderIncreseDescreseComponent(0, '+45.12'),
       amount: '45.12M',
       rowProps: {
         className: 'table-row',
       },
     },
     {
-      id: 2,
+      id: '02',
       symbol: 'wQWE',
       lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
+      change: renderIncreseDescreseComponent(1, '-12.04'),
       amount: '51.12M',
       rowProps: {
         className: 'table-row',
@@ -175,20 +191,20 @@ const data = [
   ],
   [
     {
-      id: 3,
+      id: '03',
       symbol: 'wQWE',
       lastPrice: '$4.12',
-      change: <StyledDecreaseChangedDiv>-12.4</StyledDecreaseChangedDiv>,
+      change: renderIncreseDescreseComponent(1, '-12.4'),
       amount: '51.12M',
       rowProps: {
         className: 'table-row',
       },
     },
     {
-      id: 4,
+      id: '04',
       symbol: 'wQWE',
       lastPrice: '$4.12',
-      change: <StyledIncreaseChangedDiv>+45.12</StyledIncreaseChangedDiv>,
+      change: renderIncreseDescreseComponent(0, '+45.12'),
       amount: '51.12M',
       rowProps: {
         className: 'table-row',
@@ -298,10 +314,15 @@ export const TopTen = () => {
                 icon={<img src={images.Filter} alt="filter" />}
                 displayRightIcon={false}
                 disabled
-                
               />
-              <IconButton text="Pre Market" icon={<img src={images.Clock} alt="pre" />} />
-              <IconButton text="Today" icon={<img src={images.Calender} alt="today" />} />
+              <IconButton
+                text="Pre Market"
+                icon={<img src={images.Clock} alt="pre" />}
+              />
+              <IconButton
+                text="Today"
+                icon={<img src={images.Calender} alt="today" />}
+              />
             </div>
           );
         }}
@@ -309,7 +330,11 @@ export const TopTen = () => {
           return (
             <>
               <StyledFilterDiv>
-                <StyledButton id="PopoverClick" type="button" onClick={() => setIsIssueClassOpen(!isIssueClassOpen)}>
+                <StyledButton
+                  id="PopoverClick"
+                  type="button"
+                  onClick={() => setIsIssueClassOpen(!isIssueClassOpen)}
+                >
                   <StyledBadge>
                     {
                       issueClassOptions.filter(({ isChecked }) => isChecked)

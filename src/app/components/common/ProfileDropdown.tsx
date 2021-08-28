@@ -29,7 +29,7 @@ export const ProfileDropdown = ({ items }: ItemsType) => {
       <StyledDropdownToggle caret={false}>
         <img src="https://picsum.photos/45" alt="profile" />
         <p>Myroslav</p>
-        <img className="icon-expand" src={images.Expand} />
+        <img className="icon-expand" src={images.Expand} alt="icon" />
       </StyledDropdownToggle>
       <StyledDropdownMenu className="shadow rounded-3">
         {items.map(({ text, iconActive, iconInActive }, index) => (

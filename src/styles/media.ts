@@ -74,6 +74,7 @@ declare module 'styled-components' {
       darkBlue: string;
       darkGrey: string;
       midGrey: string;
+      grey: string;
       lightGrey: string;
       yellow: string;
       peach: string;

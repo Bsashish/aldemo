@@ -21,7 +21,7 @@ export const NoData = ({
 
 const StyledDiv = styled.div`
   border: 0;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: white;
   margin: 24px auto;
   padding: 4em 12em;
@@ -34,7 +34,7 @@ const StyledDiv = styled.div`
 `;
 
 const StyledInnerDiv = styled.div`
-  border: 1px dashed ${({ theme }) => theme.colors.darkGrey};
+  border: 1px dashed ${({ theme }) => theme.colors.grey};
   border-radius: 8px;
   margin: 2em auto;
   width: 100%;
