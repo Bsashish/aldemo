@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { Tabs } from 'app/components/common/Tabs';
 import { Title } from '../../components/common/Title';
-import { IconButton } from 'app/components/common';
+import { IconButton, IconInfo } from 'app/components/common';
 import CustomTable from 'app/components/Table';
 
 export const Alerts = (): JSX.Element => {
@@ -32,16 +32,7 @@ export const Alerts = (): JSX.Element => {
 };
 
 export const StyledTooltip = styled.div`
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.darkGrey};
-  font-style: italic;
-  text-transform: lowercase;
-  border-radius: 50%;
+
 `;
 
 const StyledTitle = styled.p`
@@ -94,7 +85,7 @@ const colums = [
       <div className="d-flex">
         <StyledTitle>movement</StyledTitle>&nbsp;
         <StyledTooltip data-for="tooltip" data-tip="movement">
-          i
+          <IconInfo />
         </StyledTooltip>
       </div>
     ),
@@ -105,7 +96,7 @@ const colums = [
       <div className="d-flex">
         <StyledTitle>volume</StyledTitle>&nbsp;
         <StyledTooltip data-for="tooltip" data-tip="volume">
-          i
+          <IconInfo />
         </StyledTooltip>
       </div>
     ),
@@ -116,7 +107,7 @@ const colums = [
       <div className="d-flex">
         <StyledTitle>timestamp</StyledTitle>&nbsp;
         <StyledTooltip data-for="tooltip" data-tip="timestamp">
-          i
+          <IconInfo />
         </StyledTooltip>
       </div>
     ),

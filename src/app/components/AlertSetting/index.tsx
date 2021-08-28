@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Badge } from 'reactstrap';
 import Switch from 'react-switch';
 import ReactTooltip from 'react-tooltip';
+import { IconInfo } from '../common';
 
 type BadgeProps = {
   isColor?: boolean;
@@ -11,7 +12,7 @@ type BadgeProps = {
 const Badges = styled(Badge)<BadgeProps>`
   background: ${({ theme, isColor }) =>
     isColor ? theme.colors.darkBlue : theme.colors.peach};
-  border-radius: 0.7rem;
+  border-radius: 20px;
   font-weight: 400;
 `;
 
@@ -19,22 +20,56 @@ const AlertItem = styled.span`
   color: ${({ theme }) => theme.colors.darkBlue};
   margin-left: 15px;
   font-weight: bold;
+  @media screen and (max-width: 767px) {
+    display: block;
+    margin-left: 0;
+  }
+
+`;
+
+const PropertyContainer = styled.div`
+  /* @media screen and (max-width: 767) {
+    display: block;
+    margin-left: 0;
+  } */
 `;
 
 const PropertyStyle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   flex-direction: row;
   flex-wrap: wrap;
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
 `;
 
 const Div = styled.div`
   display: flex;
+  width: 33%;
+
+  &:nth-child(2) {
+    justify-content: center;
+  }
+  &:last-child {
+    justify-content: flex-end;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    &:last-child {
+      justify-content: flex-start;
+    }
+    &:nth-child(2) {
+      justify-content: flex-start;
+    }
+  }
 `;
 const Value = styled.span`
   color: ${({ theme }) => theme.colors.darkBlue};
-  margin-left: 10px;
+  margin: 0 0 0 10px;
 `;
 
 const Property = styled.span`
@@ -46,6 +81,7 @@ const Links = styled.p`
   font-weight: bold;
   text-decoration: underline;
   display: inline;
+  cursor: pointer;
 `;
 
 const HorizontalLine = styled.hr`
@@ -72,29 +108,26 @@ const SwitchStyle = styled.div`
   text-transform: uppercase !important;
 `;
 
-const SwitchSpan = styled.span`
-  float: right;
+const SwitchSpan = styled.div`
+  //float: right;
 `;
 
 const StyledTooltip = styled.span`
-  width: 20px;
-  height: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.darkGrey};
-  font-style: italic;
-  text-transform: lowercase;
-  border-radius: 50%;
-  font-size: smaller;
-  margin-left: 10px;
 `;
 
 const DivStyle = styled.div`
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
+
+/**
+    display: block;
+    margin-left: 0; */
 
 const AlertSettingComponent = ({ element }) => {
   const [isUpdate, setIsUpdate] = useState(false);
@@ -107,10 +140,12 @@ const AlertSettingComponent = ({ element }) => {
     <div>
       <div>
         <DivStyle>
-          <Badges isColor={!isUpdate}>
-            {isUpdate ? 'Customized' : ' Default'}
-          </Badges>
-          <AlertItem>{`${element.alertName} Alerts`} </AlertItem>
+          <PropertyContainer>
+            <Badges isColor={!isUpdate}>
+              {isUpdate ? 'Customized' : ' Default'}
+            </Badges>
+            <AlertItem>{`${element.alertName} Alerts`} </AlertItem>
+          </PropertyContainer>
 
           <SwitchSpan>
             <StyledTooltip
@@ -133,21 +168,21 @@ const AlertSettingComponent = ({ element }) => {
             <Property>Volume:</Property>
             <Value>{element.volume}</Value>
             <StyledTooltip data-for="tooltip" data-tip="Volume">
-              i
+              <IconInfo />
             </StyledTooltip>
           </Div>
           <Div>
             <Property>Movement Threshold:</Property>
             <Value>{element.movementThreshold}</Value>
             <StyledTooltip data-for="tooltip" data-tip="Movement Threshold">
-              i
+              <IconInfo />
             </StyledTooltip>
           </Div>
           <Div>
             <Property>Minimum Movement:</Property>
             <Value>{element.minimumMovement}</Value>
             <StyledTooltip data-for="tooltip" data-tip="Minimum Movement">
-              i
+              <IconInfo />
             </StyledTooltip>
           </Div>
         </PropertyStyle>

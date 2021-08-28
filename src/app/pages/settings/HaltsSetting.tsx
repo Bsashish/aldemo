@@ -3,9 +3,10 @@ import { Badge } from 'reactstrap';
 import { useState } from 'react';
 import Switch from 'react-switch';
 import ReactTooltip from 'react-tooltip';
+import { IconInfo } from '../../components/common/StyledIcons';
 
 const StyledDiv = styled.div`
-  padding: 0 1.5rem;
+  padding: 0 26px;  
 `;
 
 type BadgeProps = {
@@ -58,29 +59,33 @@ const SwitchStyle = styled.div`
 
 const DivContainer = styled.div`
   padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Links = styled.p`
   color: ${({ theme }) => theme.colors.green};
   font-weight: bold;
   text-decoration: underline;
-  / display: inline; /
+  /* / display: inline; / */
   margin-top: 30px;
+  cursor: pointer;
 `;
 
 const StyledTooltip = styled.span`
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.darkGrey};
-  font-style: italic;
-  text-transform: lowercase;
-  border-radius: 50%;
-  font-size: smaller;
-  margin-left: 10px;
+  // width: 20px;
+  // height: 20px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // color: ${({ theme }) => theme.colors.white};
+  // background-color: ${({ theme }) => theme.colors.darkGrey};
+  // font-style: italic;
+  // text-transform: lowercase;
+  // border-radius: 50%;
+  // font-size: smaller;
+  // margin-left: 10px;
 `;
 
 const DivFlex = styled.div`
@@ -94,11 +99,13 @@ const HaltsSettings = () => {
   return (
     <StyledDiv>
       <DivContainer>
-        <Badges isColor={!isUpdate}>
-          {isUpdate ? 'Customized' : ' default'}
-        </Badges>
-        <Span>Intraday Halts </Span>
-        <span style={{ float: 'right' }}>
+        <div>
+          <Badges isColor={!isUpdate}>
+            {isUpdate ? 'Customized' : ' default'}
+          </Badges>
+          <Span>Intraday Halts </Span>
+        </div>
+        <div style={{ float: 'right' }}>
           <Switch
             checked={isChecked}
             onChange={() => setIsChecked(!isChecked)}
@@ -107,13 +114,13 @@ const HaltsSettings = () => {
             className="react-switch"
             id="small-radius-switch"
           />
-        </span>
+        </div>
       </DivContainer>
       <Div>
         <DivFlex>
           <Property>Direction</Property>
           <StyledTooltip data-for="tooltip" data-tip="Direction">
-            i
+            <IconInfo />
           </StyledTooltip>
         </DivFlex>
         <div>
@@ -125,7 +132,7 @@ const HaltsSettings = () => {
         <DivFlex>
           <Property>Volume</Property>
           <StyledTooltip data-for="tooltip" data-tip="Volume">
-            i
+            <IconInfo />
           </StyledTooltip>
         </DivFlex>
         <div>

@@ -27,10 +27,28 @@ const StyledButton = styled(Button)`
 
 const StyledRadio = styled(Input).attrs(() => ({ type: 'radio' }))`
   border: 1px solid ${({ theme }) => theme.colors.darkGrey};
+  position:relative;
+  box-shadow: none !important;
+  background: #FFF;
+  cursor: pointer;
 
-  &:checked {
-    border: 1px solid ${({ theme }) => theme.colors.green};
+  &:checked{ 
+    background-color: #fff !important;
+    border-color:${({ theme }) => theme.colors.green};
+  }
+
+  &:checked::after {
+    /* border: 1px solid ${({ theme }) => theme.colors.green}; */
     background-color: ${({ theme }) => theme.colors.green};
+    /* background-image:none; */
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
   }
 `;
 

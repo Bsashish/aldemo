@@ -15,6 +15,7 @@ const CollapseTitle = styled.h1`
   margin: 58px 0 0;
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const StyledDiv = styled.div`
@@ -25,10 +26,14 @@ const StyledCard = styled(Card)`
   border: 0;
   border-radius: 12px 12px 0px 0px;
   margin: 24px auto;
+ 
 `;
 
 const StyledCardBody = styled(CardBody)`
   padding: 12px 69px;
+  @media screen and (max-width: 767px) {
+    padding: 12px 20px
+  }
 `;
 
 type ActiveProps = {
@@ -60,9 +65,10 @@ const Icon = styled.img<ActiveProps>`
   height: 10px;
   vertical-align: top;
   margin-left: auto;
+  transform: rotate(180deg);
 
   &.rotate {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
   }
 `;
 

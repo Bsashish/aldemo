@@ -2,7 +2,7 @@ import { Button, Modal, ModalBody } from 'reactstrap';
 import styled from 'styled-components';
 
 const CloseButton = styled.span`
-  font-size: xx-large;
+  font-size: 35px;
   display: block;
   text-align: end;
   padding-bottom: 20px;
@@ -12,10 +12,11 @@ const CloseButton = styled.span`
 
 //Modal modal-content
 const ModalComp = styled(Modal)`
-  width: 45%;
+  /* width: 45%; */
   .modal-content {
-    border-radius: 1rem;
-    width: 40rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width:565px;
   }
 `;
 
@@ -38,8 +39,8 @@ const StyleButton = styled(Button)<ButtonProps>`
   border: 2px solid ${({ theme }) => theme.colors.green};
   border-radius: 8px;
 
-  height: 4rem;
-  width: 10rem;
+  height: 100%;
+  width: 160px;
   font-size: large;
   font-weight: bold;
 `;

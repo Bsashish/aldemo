@@ -9,6 +9,7 @@ import SettingsActive from '../assets/images/SettingsActive.png';
 import SettingsInActive from '../assets/images/SettingsInActive.png';
 import LogoSmall from '../assets/images/LogoSmall.png';
 import Expand from '../assets/images/Expand.svg';
+import Info from '../assets/images/Info.svg';
 
 const images = {
   Logo,
@@ -22,6 +23,7 @@ const images = {
   SettingsInActive,
   LogoSmall,
   Expand,
+  Info,
 };
 
 export default images;
