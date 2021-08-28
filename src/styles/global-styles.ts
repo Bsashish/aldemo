@@ -100,6 +100,9 @@ export const GlobalStyle = createGlobalStyle`
     overflow-y: auto;
     padding: 0px;
     margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
   }
 
   .side-menu::-webkit-scrollbar {

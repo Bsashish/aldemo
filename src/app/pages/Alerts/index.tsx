@@ -4,6 +4,8 @@ import { Tabs } from 'app/components/common/Tabs';
 import { Title } from '../../components/common/Title';
 import { IconButton } from 'app/components/common';
 import CustomTable from 'app/components/Table';
+import images from 'utils/images';
+import colors from 'utils/colors';
 
 export const Alerts = (): JSX.Element => {
   return (
@@ -21,24 +23,22 @@ export const Alerts = (): JSX.Element => {
               className="d-flex justify-content-start flex-wrap mt-4 mt-lg-0"
               style={{ gap: 16 }}
             >
-              <IconButton text="Today" icon={<div>T</div>} />
+              <IconButton text="Today" icon={<img src={images.Calender} alt="today" />} />
             </div>
           );
         }}
       />
-      <ReactTooltip id="tooltip" place="bottom" />
+      <ReactTooltip id="tooltip" place="bottom" effect="solid" backgroundColor={colors.darkGrey}  />
     </div>
   );
 };
 
-export const StyledTooltip = styled.div`
+export const StyledTooltip = styled.img`
   width: 20px;
   height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.darkGrey};
   font-style: italic;
   text-transform: lowercase;
   border-radius: 50%;
@@ -93,9 +93,7 @@ const colums = [
     title: (
       <div className="d-flex">
         <StyledTitle>movement</StyledTitle>&nbsp;
-        <StyledTooltip data-for="tooltip" data-tip="movement">
-          i
-        </StyledTooltip>
+        <StyledTooltip src={images.Tooltip} data-for="tooltip" data-tip="movement" />
       </div>
     ),
     field: 'movement',
@@ -104,9 +102,7 @@ const colums = [
     title: (
       <div className="d-flex">
         <StyledTitle>volume</StyledTitle>&nbsp;
-        <StyledTooltip data-for="tooltip" data-tip="volume">
-          i
-        </StyledTooltip>
+        <StyledTooltip src={images.Tooltip} data-for="tooltip" data-tip="volume" />
       </div>
     ),
     field: 'volume',
@@ -115,9 +111,7 @@ const colums = [
     title: (
       <div className="d-flex">
         <StyledTitle>timestamp</StyledTitle>&nbsp;
-        <StyledTooltip data-for="tooltip" data-tip="timestamp">
-          i
-        </StyledTooltip>
+        <StyledTooltip src={images.Tooltip} data-for="tooltip" data-tip="timestamp" />
       </div>
     ),
     field: 'timestamp',

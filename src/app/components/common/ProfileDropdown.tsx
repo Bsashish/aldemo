@@ -6,6 +6,7 @@ import {
   DropdownItem,
 } from 'reactstrap';
 import styled from 'styled-components';
+import images from 'utils/images';
 
 type ItemType = {
   text: string;
@@ -27,9 +28,10 @@ export const ProfileDropdown = ({ items }: ItemsType) => {
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
       <StyledDropdownToggle caret={false}>
         <img src="https://picsum.photos/45" alt="profile" />
-        <p>Myroslav &or;</p>
+        <p>Myroslav</p>
+        <img className="icon-expand" src={images.Expand} />
       </StyledDropdownToggle>
-      <StyledDropdownMenu>
+      <StyledDropdownMenu className="shadow rounded-3">
         {items.map(({ text, iconActive, iconInActive }, index) => (
           <>
             <StyledDropdownItem
@@ -70,6 +72,11 @@ const StyledDropdownToggle = styled(DropdownToggle)`
     margin: 10px;
   }
 
+  .icon-expand {
+    height: 10px;
+    transform: rotate(180deg);
+  }
+
   p {
     margin: 0;
 
@@ -83,6 +90,7 @@ const StyledDropdownMenu = styled(DropdownMenu)`
   right: 0;
   top: 65px;
   background-color: ${({ theme }) => theme.colors.white};
+  border: 0;
 `;
 
 const StyledDropdownItem = styled(DropdownItem)`
