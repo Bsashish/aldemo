@@ -12,11 +12,13 @@ const Badges = styled(Badge)<BadgeProps>`
   background: ${({ theme, isColor }) =>
     isColor ? theme.colors.darkBlue : theme.colors.peach};
   border-radius: 0.7rem;
+  font-weight: 400;
 `;
 
 const AlertItem = styled.span`
   color: ${({ theme }) => theme.colors.darkBlue};
-  margin-left: 40px;
+  margin-left: 15px;
+  font-weight: bold;
 `;
 
 const PropertyStyle = styled.div`
@@ -90,6 +92,7 @@ const StyledTooltip = styled.span`
 `;
 
 const DivStyle = styled.div`
+  padding-top: 20px;
   padding-bottom: 20px;
 `;
 
@@ -101,7 +104,7 @@ const AlertSettingComponent = ({ element }) => {
   };
 
   return (
-    <div className="mx-4">
+    <div>
       <div>
         <DivStyle>
           <Badges isColor={!isUpdate}>
@@ -163,6 +166,7 @@ const AlertSettingComponent = ({ element }) => {
         id="tooltip"
         className="tooltip"
         place="bottom"
+        effect="solid"
         textColor="#FFFFFF"
         backgroundColor="#7C8DA6"
       />

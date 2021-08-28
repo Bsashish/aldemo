@@ -7,8 +7,8 @@ import HaltsActive from '../assets/images/HaltsActive.png';
 import HaltsInActive from '../assets/images/HaltsInActive.png';
 import SettingsActive from '../assets/images/SettingsActive.png';
 import SettingsInActive from '../assets/images/SettingsInActive.png';
-import Vector from '../assets/images/Vector.png';
-import Path from '../assets/images/Path.svg';
+import LogoSmall from '../assets/images/LogoSmall.png';
+import Expand from '../assets/images/Expand.svg';
 
 const images = {
   Logo,
@@ -20,8 +20,8 @@ const images = {
   HaltsInActive,
   SettingsActive,
   SettingsInActive,
-  Vector,
-  Path,
+  LogoSmall,
+  Expand,
 };
 
 export default images;

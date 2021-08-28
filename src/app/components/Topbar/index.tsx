@@ -2,9 +2,9 @@ import styled, { useTheme } from 'styled-components';
 import colors from 'utils/colors';
 import { AlertMessage, ProfileDropdown } from '../common';
 
-import ProfileInActive from 'assets/images/ProfileInActive.png'
-import ProfileActive from 'assets/images/ProfileActive.png'
-import Logout from 'assets/images/Logout.png'
+import ProfileInActive from 'assets/images/ProfileInActive.png';
+import ProfileActive from 'assets/images/ProfileActive.png';
+import Logout from 'assets/images/Logout.png';
 
 const Header = styled.div`
   width: 100%;
@@ -61,11 +61,11 @@ const items = [
   {
     text: 'Profile',
     iconActive: ProfileActive,
-    iconInActive: ProfileInActive
+    iconInActive: ProfileInActive,
   },
   {
     text: 'Logout',
     iconActive: Logout,
-    iconInActive: Logout
-  }
-]
+    iconInActive: Logout,
+  },
+];

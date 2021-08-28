@@ -53,13 +53,12 @@ export function App() {
               <Switch>
                 <Route exact path="/" component={TopTen} />
                 <Route exact path="/alerts" component={Alerts} />
-                <Route exact path='/settings' component={SettingsPage} />
+                <Route exact path="/settings" component={SettingsPage} />
                 <Route component={NotFoundPage} />
               </Switch>
             </CustomContainer>
           </ThemeProvider>
         </StyledDiv>
-
       </div>
       <GlobalStyle />
     </BrowserRouter>

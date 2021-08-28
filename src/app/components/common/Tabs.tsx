@@ -75,6 +75,7 @@ const SelectedText = styled.label<SelectedTextType>`
   border-radius: ${({ isActive, index }) => isActive === index && '12px'};
   font-weight: ${({ isActive, index }) => (isActive === index ? 600 : 500)};
   text-align: center;
+  cursor: pointer;
 
   &:first-child {
     border-top-left-radius: 12px;

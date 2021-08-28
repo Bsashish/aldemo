@@ -4,14 +4,6 @@ import styled from 'styled-components';
 import CustomTable from 'app/components/Table';
 import { Title, Tabs, IconButton } from 'app/components/common';
 import CustomPopover from 'app/components/Popover';
-import { NoData } from 'app/components/NoDataComponent';
-
-const StyledFlex = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 36px;
-`;
 
 const StyledDiv = styled.div`
   padding: 0 1.5rem;

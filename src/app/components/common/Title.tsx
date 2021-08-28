@@ -5,7 +5,7 @@ const StyledTitle = styled.h1`
   font-weight: 600;
   font-size: 24px;
   color: ${({ theme }) => theme.colors.darkBlue};
-  margin: 1.5rem 0;
+  margin: 60px 0px 30px;
 `;
 
 export const Title = ({ title, id = '' }) => {

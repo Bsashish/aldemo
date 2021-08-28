@@ -1,25 +1,20 @@
-import { Title, SettingModal } from 'app/components/common';
+import { Title } from 'app/components/common';
 import { useState } from 'react';
-import {
-  Card,
-  CardBody,
-  UncontrolledCollapse,
-  Input,
-  Label,
-  Button,
-} from 'reactstrap';
+import { Card, CardBody, UncontrolledCollapse } from 'reactstrap';
 import styled from 'styled-components';
-import colors from 'utils/colors';
-import { AlertSettings } from './Alert';
+import { AlertSettings } from './AlertSettings';
 import HaltsSettings from './HaltsSetting';
 import images from 'utils/images';
+import NotificationSettings from './NotificationSettings';
 
 const CollapseTitle = styled.h1`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   color: ${({ theme }) => theme.colors.darkBlue};
-  margin: 1.5rem 0;
+  margin: 58px 0 0;
+  display: flex;
+  align-items: center;
 `;
 
 const StyledDiv = styled.div`
@@ -28,34 +23,12 @@ const StyledDiv = styled.div`
 
 const StyledCard = styled(Card)`
   border: 0;
-  border-radius: 8px;
+  border-radius: 12px 12px 0px 0px;
   margin: 24px auto;
 `;
 
 const StyledCardBody = styled(CardBody)`
-  padding: 12px 32px;
-`;
-
-const StyledButton = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.green};
-  border-radius: 200px;
-  border-style: none;
-`;
-
-const StyledRadio = styled(Input).attrs(() => ({ type: 'radio' }))`
-  
-  border: 1px solid ${({ theme }) => theme.colors.darkGrey};
-
-  &:checked {
-    border: 1px solid ${({ theme }) => theme.colors.green};
-  }
-`;
-
-const StyledLabel = styled(Label)`
-  font-size: large;
-  font-weight: 500;
-  line-height: 1.5em;
-  padding-right: 50px;
+  padding: 12px 69px;
 `;
 
 type ActiveProps = {
@@ -65,35 +38,28 @@ type ActiveProps = {
 const StyledHr = styled.hr<ActiveProps>`
   padding: 0 1.5rem;
   color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.green : theme.colors.darkGrey};
-  margin-bottom: 30px;
+    isActive ? theme.colors.lightGreen : theme.colors.darkGrey};
+  margin: 24px 0 30px;
   &:not([size]) {
-    height: 2px;
+    height: 1px;
   }
-`;
-
-const RadioContainerDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 30px;
-  flex-wrap: wrap;
 `;
 
 //UncontrolledCollapse
 const StyledUncontrolledCollapse = styled(UncontrolledCollapse)`
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 `;
 
 const VectorIcon = styled.img`
-  height: 25px;
-  padding-right: 15px;
+  height: 18px;
+  padding-right: 13px;
   vertical-align: top;
 `;
 
 const Icon = styled.img<ActiveProps>`
   height: 10px;
   vertical-align: top;
-  float: right;
+  margin-left: auto;
 
   &.rotate {
     transform: rotate(180deg);
@@ -101,9 +67,7 @@ const Icon = styled.img<ActiveProps>`
 `;
 
 const SettingsPage = () => {
-  const [SettingSelect, setSettingSelect] = useState('');
-  const [receiveNotification, SetReceiveNotification] = useState('sms');
-  const [settingModal, setSettingModal] = useState(false);
+  const [settingSelect, setSettingSelect] = useState('');
 
   return (
     <StyledDiv>
@@ -119,76 +83,17 @@ const SettingsPage = () => {
               )
             }
           >
-            <VectorIcon src={images.Vector} alt="vector" />
+            <VectorIcon src={images.LogoSmall} alt="vector" />
             Where to Receive Notifications
             <Icon
-              src={images.Path}
+              src={images.Expand}
               alt="logo"
-              className={SettingSelect === 'NotifierToggler' ? 'rotate' : ''}
+              className={settingSelect === 'NotifierToggler' ? 'rotate' : ''}
             />
           </CollapseTitle>
-          <StyledHr isActive={SettingSelect === 'NotifierToggler'} />
+          <StyledHr isActive={settingSelect === 'NotifierToggler'} />
           <StyledUncontrolledCollapse toggler="#NotifierToggler">
-            <RadioContainerDiv>
-              <div>
-                <StyledLabel check>
-                  <StyledRadio
-                    type="radio"
-                    name="radio1"
-                    value="sms"
-                    defaultChecked
-                    onClick={e => SetReceiveNotification(e.target.value)}
-                  />{' '}
-                  SMS
-                </StyledLabel>
-                <StyledLabel check>
-                  <StyledRadio
-                    type="radio"
-                    name="radio1"
-                    value="email"
-                    onClick={e => SetReceiveNotification(e.target.value)}
-                  />{' '}
-                  Email
-                </StyledLabel>
-              </div>
-              <div>
-                <StyledButton onClick={() => setSettingModal(true)}>
-                  Save
-                </StyledButton>
-              </div>
-            </RadioContainerDiv>
-            <div>
-              {receiveNotification === 'email' && (
-                <span style={{ color: colors.darkGrey }}>
-                  We will send you an email at{' '}
-                  <span style={{ color: colors.darkGrey, fontWeight: 'bold' }}>
-                    tyler@alurts.net
-                  </span>{' '}
-                  when something{' '}
-                  <span
-                    style={{ color: colors.lightGreen, fontWeight: 'bold' }}
-                  >
-                    interesting*
-                  </span>{' '}
-                  happens.
-                </span>
-              )}
-              {receiveNotification === 'sms' && (
-                <span style={{ color: colors.darkGrey }}>
-                  We will send you a text message at{' '}
-                  <span style={{ color: colors.darkGrey, fontWeight: 'bold' }}>
-                    +1 (202)-555-0108
-                  </span>{' '}
-                  when something{' '}
-                  <span
-                    style={{ color: colors.lightGreen, fontWeight: 'bold' }}
-                  >
-                    interesting*
-                  </span>{' '}
-                  happens.
-                </span>
-              )}
-            </div>
+            <NotificationSettings />
           </StyledUncontrolledCollapse>
           {/* Alert Setting */}
           <CollapseTitle
@@ -199,15 +104,15 @@ const SettingsPage = () => {
               )
             }
           >
-            <VectorIcon src={images.Vector} alt="vector" />
+            <VectorIcon src={images.LogoSmall} alt="vector" />
             Alerts
             <Icon
-              src={images.Path}
+              src={images.Expand}
               alt="logo"
-              className={SettingSelect === 'AlertToggler' ? 'rotate' : ''}
+              className={settingSelect === 'AlertToggler' ? 'rotate' : ''}
             />
           </CollapseTitle>
-          <StyledHr isActive={SettingSelect === 'AlertToggler'} />
+          <StyledHr isActive={settingSelect === 'AlertToggler'} />
           <StyledUncontrolledCollapse toggler="#AlertToggler">
             <AlertSettings />
           </StyledUncontrolledCollapse>
@@ -221,22 +126,20 @@ const SettingsPage = () => {
               )
             }
           >
-            <VectorIcon src={images.Vector} alt="vector" />
+            <VectorIcon src={images.LogoSmall} alt="vector" />
             Halts
             <Icon
-              src={images.Path}
+              src={images.Expand}
               alt="logo"
-              className={SettingSelect === 'HaltToggler' ? 'rotate' : ''}
+              className={settingSelect === 'HaltToggler' ? 'rotate' : ''}
             />
           </CollapseTitle>
-          <StyledHr isActive={SettingSelect === 'HaltToggler'} />
+          <StyledHr isActive={settingSelect === 'HaltToggler'} />
           <StyledUncontrolledCollapse toggler="#HaltToggler">
             <HaltsSettings />
           </StyledUncontrolledCollapse>
         </StyledCardBody>
       </StyledCard>
-
-      <SettingModal setModal={setSettingModal} modal={settingModal} />
     </StyledDiv>
   );
 };

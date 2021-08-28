@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { Tabs } from 'app/components/common/Tabs';
 import { Title } from '../../components/common/Title';
+import { IconButton } from 'app/components/common';
 import CustomTable from 'app/components/Table';
 
 export const Alerts = (): JSX.Element => {
@@ -13,6 +14,16 @@ export const Alerts = (): JSX.Element => {
         minWidthInContent={'initial'}
         render={(index: number): JSX.Element => {
           return <CustomTable columns={colums} data={data[index]} />;
+        }}
+        rightSection={() => {
+          return (
+            <div
+              className="d-flex justify-content-start flex-wrap mt-4 mt-lg-0"
+              style={{ gap: 16 }}
+            >
+              <IconButton text="Today" icon={<div>T</div>} />
+            </div>
+          );
         }}
       />
       <ReactTooltip id="tooltip" place="bottom" />
