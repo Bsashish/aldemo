@@ -100,14 +100,22 @@ export const GlobalStyle = createGlobalStyle`
     overflow-y: auto;
     padding: 0px;
     margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+
+    @media screen and (max-width: 768px) {
+      margin-top: 0;
+      height: 100%;
+    }
   }
 
   .side-menu::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
   }
 
   .side-menu::-webkit-scrollbar-thumb {
-    background: #5466b3;
+    background: #7C8DA6;
     border-radius: 3px;
   }
 

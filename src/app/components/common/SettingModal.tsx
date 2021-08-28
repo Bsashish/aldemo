@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const CloseButton = styled.span`
   font-size: 35px;
-  //display: block;
   text-align: end;
   padding-bottom: 20px;
   padding-right: 10px;
@@ -17,13 +16,11 @@ const CloseButton = styled.span`
 
 //Modal modal-content
 const ModalComp = styled(Modal)`
-  /* width: 45%; */
   justify-content: center;
   .modal-content {
     border-radius: 16px;
     width: 100%;
     max-width: 565px;
-    //width: 40rem;
   }
 `;
 
@@ -47,8 +44,8 @@ const StyleButton = styled(Button)<ButtonProps>`
   border: 2px solid ${({ theme }) => theme.colors.green};
   border-radius: 8px;
 
-  height: 4rem;
-  width: 10rem;
+  height: 64px;
+  width: 160px;
   font-size: large;
   font-weight: bold;
 

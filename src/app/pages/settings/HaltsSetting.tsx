@@ -6,7 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import { IconInfo } from '../../components/common/StyledIcons';
 
 const StyledDiv = styled.div`
-  padding: 0 26px;  
+  padding: 0 26px;
 `;
 
 type BadgeProps = {
@@ -119,7 +119,7 @@ const HaltsSettings = () => {
       <Div>
         <DivFlex>
           <Property>Direction</Property>
-          <StyledTooltip data-for="tooltip" data-tip="Direction">
+          <StyledTooltip data-for="tooltip2" data-tip="Direction">
             <IconInfo />
           </StyledTooltip>
         </DivFlex>
@@ -131,7 +131,7 @@ const HaltsSettings = () => {
       <Div>
         <DivFlex>
           <Property>Volume</Property>
-          <StyledTooltip data-for="tooltip" data-tip="Volume">
+          <StyledTooltip data-for="tooltip2" data-tip="Volume">
             <IconInfo />
           </StyledTooltip>
         </DivFlex>
@@ -147,7 +147,7 @@ const HaltsSettings = () => {
         {isUpdate ? 'Update' : 'Customize'}
       </Links>
       <ReactTooltip
-        id="tooltip"
+        id="tooltip2"
         className="tooltip"
         place="bottom"
         textColor="#FFFFFF"

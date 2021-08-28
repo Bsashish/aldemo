@@ -6,7 +6,7 @@ const StyledIcon = styled.img`
   vertical-align: top;
   margin-left: 15px;
   display: flex;
-    align-items: center;
+  align-items: center;
 `;
 
 export const IconInfo = () => {

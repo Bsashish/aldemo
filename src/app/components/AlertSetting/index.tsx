@@ -24,14 +24,6 @@ const AlertItem = styled.span`
     display: block;
     margin-left: 0;
   }
-
-`;
-
-const PropertyContainer = styled.div`
-  /* @media screen and (max-width: 767) {
-    display: block;
-    margin-left: 0;
-  } */
 `;
 
 const PropertyStyle = styled.div`
@@ -46,7 +38,7 @@ const PropertyStyle = styled.div`
   }
 `;
 
-const Div = styled.div`
+const PropertyDiv = styled.div`
   display: flex;
   width: 33%;
 
@@ -108,26 +100,18 @@ const SwitchStyle = styled.div`
   text-transform: uppercase !important;
 `;
 
-const SwitchSpan = styled.div`
-  //float: right;
-`;
-
-const StyledTooltip = styled.span`
+const StyledAlertTooltip = styled.span`
   display: flex;
   align-items: center;
 `;
 
-const DivStyle = styled.div`
+const BadgesDiv = styled.div`
   padding-top: 20px;
   padding-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-
-/**
-    display: block;
-    margin-left: 0; */
 
 const AlertSettingComponent = ({ element }) => {
   const [isUpdate, setIsUpdate] = useState(false);
@@ -139,16 +123,16 @@ const AlertSettingComponent = ({ element }) => {
   return (
     <div>
       <div>
-        <DivStyle>
-          <PropertyContainer>
+        <BadgesDiv>
+          <div>
             <Badges isColor={!isUpdate}>
               {isUpdate ? 'Customized' : ' Default'}
             </Badges>
             <AlertItem>{`${element.alertName} Alerts`} </AlertItem>
-          </PropertyContainer>
+          </div>
 
-          <SwitchSpan>
-            <StyledTooltip
+          <div>
+            <StyledAlertTooltip
               data-for="tooltip"
               data-tip="You've useed up your alerts ceadits Buy more to continue "
             >
@@ -160,31 +144,34 @@ const AlertSettingComponent = ({ element }) => {
                 className="react-switch"
                 id="small-radius-switch"
               />
-            </StyledTooltip>
-          </SwitchSpan>
-        </DivStyle>
+            </StyledAlertTooltip>
+          </div>
+        </BadgesDiv>
         <PropertyStyle>
-          <Div>
+          <PropertyDiv>
             <Property>Volume:</Property>
             <Value>{element.volume}</Value>
-            <StyledTooltip data-for="tooltip" data-tip="Volume">
+            <StyledAlertTooltip data-for="tooltip" data-tip="Volume">
               <IconInfo />
-            </StyledTooltip>
-          </Div>
-          <Div>
+            </StyledAlertTooltip>
+          </PropertyDiv>
+          <PropertyDiv>
             <Property>Movement Threshold:</Property>
             <Value>{element.movementThreshold}</Value>
-            <StyledTooltip data-for="tooltip" data-tip="Movement Threshold">
+            <StyledAlertTooltip
+              data-for="tooltip"
+              data-tip="Movement Threshold"
+            >
               <IconInfo />
-            </StyledTooltip>
-          </Div>
-          <Div>
+            </StyledAlertTooltip>
+          </PropertyDiv>
+          <PropertyDiv>
             <Property>Minimum Movement:</Property>
             <Value>{element.minimumMovement}</Value>
-            <StyledTooltip data-for="tooltip" data-tip="Minimum Movement">
+            <StyledAlertTooltip data-for="tooltip" data-tip="Minimum Movement">
               <IconInfo />
-            </StyledTooltip>
-          </Div>
+            </StyledAlertTooltip>
+          </PropertyDiv>
         </PropertyStyle>
         <div>
           <Links
@@ -196,15 +183,15 @@ const AlertSettingComponent = ({ element }) => {
           </Links>
         </div>
         <HorizontalLine />
+        <ReactTooltip
+          id="tooltip"
+          className="tooltip"
+          place="bottom"
+          effect="solid"
+          textColor="#FFFFFF"
+          backgroundColor="#7C8DA6"
+        />
       </div>
-      <ReactTooltip
-        id="tooltip"
-        className="tooltip"
-        place="bottom"
-        effect="solid"
-        textColor="#FFFFFF"
-        backgroundColor="#7C8DA6"
-      />
     </div>
   );
 };

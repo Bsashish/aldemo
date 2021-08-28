@@ -14,7 +14,7 @@ const NotificationOptions = styled.div`
 const StyledLabel = styled(Label)`
   font-size: large;
   font-weight: 500;
-  line-height: 1.5em;
+  line-height: 26px;
   padding-right: 50px;
 `;
 
@@ -27,14 +27,14 @@ const StyledButton = styled(Button)`
 
 const StyledRadio = styled(Input).attrs(() => ({ type: 'radio' }))`
   border: 1px solid ${({ theme }) => theme.colors.darkGrey};
-  position:relative;
+  position: relative;
   box-shadow: none !important;
-  background: #FFF;
+  background: #fff;
   cursor: pointer;
 
-  &:checked{ 
+  &:checked {
     background-color: #fff !important;
-    border-color:${({ theme }) => theme.colors.green};
+    border-color: ${({ theme }) => theme.colors.green};
   }
 
   &:checked::after {
@@ -45,7 +45,7 @@ const StyledRadio = styled(Input).attrs(() => ({ type: 'radio' }))`
     content: '';
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 11px;
     height: 11px;
     border-radius: 50%;

@@ -19,20 +19,19 @@ const CollapseTitle = styled.h1`
 `;
 
 const StyledDiv = styled.div`
-  padding: 0 1.5rem;
+  padding: 0 26px;
 `;
 
 const StyledCard = styled(Card)`
   border: 0;
   border-radius: 12px 12px 0px 0px;
   margin: 24px auto;
- 
 `;
 
 const StyledCardBody = styled(CardBody)`
   padding: 12px 69px;
   @media screen and (max-width: 767px) {
-    padding: 12px 20px
+    padding: 12px 20px;
   }
 `;
 
@@ -41,7 +40,7 @@ type ActiveProps = {
 };
 
 const StyledHr = styled.hr<ActiveProps>`
-  padding: 0 1.5rem;
+  padding: 0 26px;
   color: ${({ theme, isActive }) =>
     isActive ? theme.colors.lightGreen : theme.colors.darkGrey};
   margin: 24px 0 30px;

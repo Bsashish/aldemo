@@ -1,25 +1,28 @@
 import PropTypes from 'prop-types';
-import { PopoverBody, UncontrolledPopover } from 'reactstrap';
-import styled from 'styled-components';
+import { PopoverBody, Popover } from 'reactstrap';
+import styled, { css } from 'styled-components';
 
-const StyledPopover = styled(UncontrolledPopover)`
+const StyledPopover = styled(Popover)`
   .popover {
     max-width: initial;
     border: 0;
     border-radius: 8px;
-    top: 12px !important;
-    left: 12px !important;
+    top: ${({ top }) => top ? `${top} !important` : '12px !important'};
+    left: ${({ left }) => left ? `${left} !important` : '12px !important'};
+    ${({ zIndex }) => zIndex && css`
+      z-index: ${zIndex};
+    `}
   }
 `;
 
 const StyledPopoverBody = styled(PopoverBody)`
-  min-width: 400px;
+  min-width: ${({ minWidth }) => minWidth ? minWidth : '400px'};
 `;
 
 const CustomPopover = ({ children, ...props }) => {
   return (
     <StyledPopover {...props}>
-      <StyledPopoverBody>{children}</StyledPopoverBody>
+      <StyledPopoverBody {...props}>{children}</StyledPopoverBody>
     </StyledPopover>
   );
 };

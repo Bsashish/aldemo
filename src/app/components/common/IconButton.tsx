@@ -47,6 +47,10 @@ const StyledIconDiv = styled.div`
   background-color: ${({ theme }) => theme.colors.darkBlue};
   padding: 12px;
   min-width: 3.5em;
+
+  img {
+    width: 30px;
+  }
 `;
 
 const StyledTextDiv = styled.div`
