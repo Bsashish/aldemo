@@ -17,6 +17,8 @@ import Ads from '../assets/images/ads.png';
 import Clock from '../assets/images/clock.png';
 import Calender from '../assets/images/calender.png';
 import Filter from '../assets/images/filter.png';
+import Down_Arrow from '../assets/images/down_arrow.png';
+import Up_Arrow from '../assets/images/up_arrow.png';
 
 const images = {
   Logo,
@@ -37,7 +39,9 @@ const images = {
   Ads,
   Clock,
   Calender,
-  Filter
+  Filter,
+  Down_Arrow,
+  Up_Arrow,
 };
 
 export default images;

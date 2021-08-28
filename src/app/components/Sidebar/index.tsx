@@ -58,16 +58,16 @@ const StyledCloseBtn = styled.button`
 const StyledHelpNav = styled(Nav)`
   justify-self: flex-end;
   margin-top: auto;
-`
+`;
 
 const StyledHelpItem = styled(SideItem)`
   justify-self: flex-end;
   margin-top: auto;
   margin-bottom: 5rem;
-`
+`;
 
 const StyledHelpMenuItem = styled(SideItem)`
-  p{
+  p {
     color: ${colors.darkBlue};
     font-weight: 600;
   }
@@ -111,7 +111,7 @@ const StyledBanner = styled.div`
     }
 
     button {
-      background-color: ${colors.midGrey}90;
+      background-color: rgba(255, 255, 255, 0.32);
       color: ${colors.white};
       border: 0;
       padding: 12px;
@@ -187,26 +187,23 @@ const SideBar = ({
         </Nav>
         <StyledBanner>
           <div>
-            <p>Subscribe For Full <br /> Access To <br /> <span>Premium Features</span></p>
+            <p>
+              Subscribe For Full <br /> Access To <br />{' '}
+              <span>Premium Features</span>
+            </p>
             <button>Learn More</button>
           </div>
         </StyledBanner>
         <StyledHelpNav vertical className="list-unstyled">
-          <StyledHelpItem
-            id="helpClick"
-            onClick={() => sethelpMenu(!helpMenu)}
-          >
-            <img
-              src={images.Help}
-              alt="icon"
-            />
+          <StyledHelpItem id="helpClick" onClick={() => sethelpMenu(!helpMenu)}>
+            <img src={images.Help} alt="icon" />
             <p>Need Help</p>
           </StyledHelpItem>
           <CustomPopover
             placement="right"
             target="helpClick"
-            top='-120px'
-            left='50px'
+            top="-120px"
+            left="50px"
             minWidth="250px"
             isOpen={helpMenu}
             toggle={() => sethelpMenu(!helpMenu)}
@@ -220,17 +217,11 @@ const SideBar = ({
               x
             </StyledCloseBtn>
             <StyledHelpMenuItem>
-              <img
-                src={images.Support}
-                alt="icon"
-              />
+              <img src={images.Support} alt="icon" />
               <p>Support Center</p>
             </StyledHelpMenuItem>
             <StyledHelpMenuItem>
-              <img
-                src={images.Suggestion}
-                alt="icon"
-              />
+              <img src={images.Suggestion} alt="icon" />
               <p>Have Suggestion</p>
             </StyledHelpMenuItem>
           </CustomPopover>

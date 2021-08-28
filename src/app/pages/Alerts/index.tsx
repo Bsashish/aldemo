@@ -23,12 +23,20 @@ export const Alerts = (): JSX.Element => {
               className="d-flex justify-content-start flex-wrap mt-4 mt-lg-0"
               style={{ gap: 16 }}
             >
-              <IconButton text="Today" icon={<img src={images.Calender} alt="today" />} />
+              <IconButton
+                text="Today"
+                icon={<img src={images.Calender} alt="today" />}
+              />
             </div>
           );
         }}
       />
-      <ReactTooltip id="tooltip" place="bottom" effect="solid" backgroundColor={colors.darkGrey}  />
+      <ReactTooltip
+        id="tooltip"
+        place="bottom"
+        effect="solid"
+        backgroundColor={colors.darkGrey}
+      />
     </div>
   );
 };
@@ -93,7 +101,11 @@ const colums = [
     title: (
       <div className="d-flex">
         <StyledTitle>movement</StyledTitle>&nbsp;
-        <StyledTooltip src={images.Tooltip} data-for="tooltip" data-tip="movement" />
+        <StyledTooltip
+          src={images.Tooltip}
+          data-for="tooltip"
+          data-tip="movement"
+        />
       </div>
     ),
     field: 'movement',
@@ -102,7 +114,11 @@ const colums = [
     title: (
       <div className="d-flex">
         <StyledTitle>volume</StyledTitle>&nbsp;
-        <StyledTooltip src={images.Tooltip} data-for="tooltip" data-tip="volume" />
+        <StyledTooltip
+          src={images.Tooltip}
+          data-for="tooltip"
+          data-tip="volume"
+        />
       </div>
     ),
     field: 'volume',
@@ -111,7 +127,11 @@ const colums = [
     title: (
       <div className="d-flex">
         <StyledTitle>timestamp</StyledTitle>&nbsp;
-        <StyledTooltip src={images.Tooltip} data-for="tooltip" data-tip="timestamp" />
+        <StyledTooltip
+          src={images.Tooltip}
+          data-for="tooltip"
+          data-tip="timestamp"
+        />
       </div>
     ),
     field: 'timestamp',
@@ -121,7 +141,7 @@ const colums = [
 const data = [
   [
     {
-      id: 1,
+      id: '01',
       symbol: 'silk',
       price: <StyledPrice>$45.12</StyledPrice>,
       movement: '813223422',
@@ -129,7 +149,7 @@ const data = [
       timestamp: '05:30:21',
     },
     {
-      id: 2,
+      id: '02',
       symbol: 'wQWE',
       price: <StyledPrice>$4.51</StyledPrice>,
       movement: '813223422',
@@ -137,7 +157,7 @@ const data = [
       timestamp: '12:30:21',
     },
     {
-      id: 3,
+      id: '03',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',
@@ -147,7 +167,7 @@ const data = [
   ],
   [
     {
-      id: 4,
+      id: '04',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',
@@ -155,7 +175,7 @@ const data = [
       timestamp: '05:30:21',
     },
     {
-      id: 5,
+      id: '05',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',
@@ -163,7 +183,7 @@ const data = [
       timestamp: '05:30:21',
     },
     {
-      id: 6,
+      id: '06',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',
@@ -171,7 +191,7 @@ const data = [
       timestamp: '05:30:21',
     },
     {
-      id: 7,
+      id: '07',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',
@@ -181,7 +201,7 @@ const data = [
   ],
   [
     {
-      id: 8,
+      id: '08',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',
@@ -189,7 +209,7 @@ const data = [
       timestamp: '05:30:21',
     },
     {
-      id: 9,
+      id: '09',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
       movement: '813223422',

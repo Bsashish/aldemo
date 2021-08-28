@@ -9,6 +9,12 @@ const StyledTable = styled(Table).attrs({
 })`
   min-width: 650px;
 
+  tr {
+    &:last-child {
+      border-bottom-width: 0px;
+    }
+  }
+
   td,
   th {
     padding: 1em;
@@ -30,7 +36,7 @@ const StyledTable = styled(Table).attrs({
 
 const StyledDiv = styled.div`
   border: 0;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: white;
   padding: 12px 32px;
   margin: 24px auto;
