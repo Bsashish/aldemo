@@ -4,6 +4,8 @@ import { Badge } from 'reactstrap';
 import Switch from 'react-switch';
 import ReactTooltip from 'react-tooltip';
 import { IconInfo } from '../common';
+import { StyledTooltip } from 'app/pages/Alerts';
+import images from 'utils/images';
 
 type BadgeProps = {
   isColor?: boolean;
@@ -151,26 +153,32 @@ const AlertSettingComponent = ({ element }) => {
           <PropertyDiv>
             <Property>Volume:</Property>
             <Value>{element.volume}</Value>
-            <StyledAlertTooltip data-for="tooltip" data-tip="Volume">
-              <IconInfo />
-            </StyledAlertTooltip>
+            &nbsp;
+            <StyledTooltip
+              src={images.Tooltip}
+              data-for="tooltip"
+              data-tip="Volume"
+            />
           </PropertyDiv>
           <PropertyDiv>
             <Property>Movement Threshold:</Property>
             <Value>{element.movementThreshold}</Value>
-            <StyledAlertTooltip
+            &nbsp;
+            <StyledTooltip
+              src={images.Tooltip}
               data-for="tooltip"
               data-tip="Movement Threshold"
-            >
-              <IconInfo />
-            </StyledAlertTooltip>
+            />
           </PropertyDiv>
           <PropertyDiv>
             <Property>Minimum Movement:</Property>
             <Value>{element.minimumMovement}</Value>
-            <StyledAlertTooltip data-for="tooltip" data-tip="Minimum Movement">
-              <IconInfo />
-            </StyledAlertTooltip>
+            &nbsp;
+            <StyledTooltip
+              src={images.Tooltip}
+              data-for="tooltip"
+              data-tip="Minimum Movement"
+            />
           </PropertyDiv>
         </PropertyStyle>
         <div>

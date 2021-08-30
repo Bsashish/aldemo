@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import {
   Dropdown,
   DropdownToggle,
@@ -33,7 +33,7 @@ export const ProfileDropdown = ({ items }: ItemsType) => {
       </StyledDropdownToggle>
       <StyledDropdownMenu className="shadow rounded-3">
         {items.map(({ text, iconActive, iconInActive }, index) => (
-          <>
+          <Fragment key={index}>
             <StyledDropdownItem
               onMouseEnter={() => setHoveredItemId(index)}
               onMouseLeave={() => setHoveredItemId(-1)}
@@ -46,7 +46,7 @@ export const ProfileDropdown = ({ items }: ItemsType) => {
               &nbsp; {text}
             </StyledDropdownItem>
             {items.length - 1 !== index && <StyledDivider divider />}
-          </>
+          </Fragment>
         ))}
       </StyledDropdownMenu>
     </Dropdown>

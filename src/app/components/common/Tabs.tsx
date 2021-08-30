@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import styled from 'styled-components';
 
@@ -36,7 +36,7 @@ export const Tabs = ({
             data-Tabs="buttons"
           >
             {tabs.map(({ id, name }, index) => (
-              <>
+              <Fragment key={id}>
                 <SelectedText
                   isActive={currentIndex}
                   index={index}
@@ -45,7 +45,7 @@ export const Tabs = ({
                   {name}
                 </SelectedText>
                 {tabs.length - 1 !== index && <StyledVerticalLine />}
-              </>
+              </Fragment>
             ))}
           </StyledTabs>
         </Col>
