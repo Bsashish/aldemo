@@ -104,7 +104,7 @@ const StyledHeader = styled.h5`
   min-width: 120px;
 `;
 
-const LinkButton = styled.button`
+export const LinkButton = styled.button`
   background-color: white;
   border: 1px solid ${({ theme }) => theme.colors.darkGrey};
   border-radius: 4px;

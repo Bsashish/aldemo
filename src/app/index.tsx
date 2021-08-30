@@ -21,6 +21,7 @@ import { Alerts } from './pages/Alerts';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from 'styles/theme';
 import SettingsPage from './pages/settings';
+import { Halts } from './pages/Halts';
 
 const CustomContainer = styled(Container)`
   max-height: calc(100vh - 65px);
@@ -53,6 +54,7 @@ export function App() {
               <Switch>
                 <Route exact path="/" component={TopTen} />
                 <Route exact path="/alerts" component={Alerts} />
+                <Route exact path="/halts" component={Halts} />
                 <Route exact path="/settings" component={SettingsPage} />
                 <Route component={NotFoundPage} />
               </Switch>
