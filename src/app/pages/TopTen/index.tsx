@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Badge } from 'reactstrap';
 import styled from 'styled-components';
 import CustomTable from 'app/components/Table';
 import { Title, Tabs, IconButton } from 'app/components/common';
 import CustomPopover from 'app/components/Popover';
 import images from 'utils/images';
+import serviceAPI from 'api/marketListService';
+import util from 'utils/util';
+import { startSocket } from 'utils/pusher';
 
 const StyledDiv = styled.div`
   padding: 0 1.5rem;
@@ -263,6 +266,51 @@ const tabs = [
 export const TopTen = () => {
   const [issueClassOptions, setIssueClassOptions] = useState(options);
   const [isIssueClassOpen, setIsIssueClassOpen] = useState(false);
+  const [marketData, setMarketData] = useState([]);
+  const [marketType, setMarketType] = useState('intraday');
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    getMarketListById(marketType, selectedDate);
+    // Call the API based on the type ( GAINS etc)
+  }, []);
+
+  const getMarketListById = (marketType: any, selectedDate: any) => {
+    const queryParams: any = {
+      limit: 10,
+      price: true,
+      volume: true,
+      classificationFilterOut: ['W', 'U'],
+      issueClass: true,
+    };
+    const object = util.encodeQueryURL(queryParams);
+    serviceAPI
+      .marketListService(object)
+      .then((data: any) => {
+        const job_id = data.job_id;
+        triggerMarketList(job_id);
+      })
+      .catch(error => {
+        console.log('getMarketListById, ERROR', error);
+        alert('getMarketListById Error');
+      });
+  };
+
+  const triggerMarketList = job_id => {
+    serviceAPI
+      .marketListById(job_id)
+      .then((response: any) => {
+        const { data, delivery, job_id, status, channel } = response;
+        if (delivery === 'json') {
+          return setMarketData(data[marketType]);
+        }
+        startSocket(channel);
+      })
+      .catch(error => {
+        console.log('triggerMarketList', error);
+        alert('triggerMarketList Error');
+      });
+  };
 
   const changeValueHandler = ({ target: { value: searchedValue } }) => {
     if (!searchedValue) {

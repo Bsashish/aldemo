@@ -9,8 +9,8 @@ const StyledTable = styled(Table).attrs({
 })`
   min-width: 650px;
 
-  tr {
-    &:last-child {
+  tr:last-child {
+    td {
       border-bottom-width: 0px;
     }
   }
@@ -42,16 +42,23 @@ const StyledDiv = styled.div`
   margin: 24px auto;
   width: 100%;
 `;
+
+const TableRow = styled.tr``;
+const TableData = styled.td``;
+const TableHead = styled.th``;
+
 interface Row {
   rowProps?: object;
   [key: string]: any;
 }
+
 interface Column {
   title: string | any;
   field?: string;
   columnProps?: object;
   renderCell?: (row: Row) => ReactElement;
 }
+
 interface ITableProps {
   columns: Column[];
   data: Row[];
@@ -66,31 +73,39 @@ const CustomTable = ({ columns, data }: ITableProps) => {
     <StyledDiv>
       <StyledTable>
         <thead>
-          <tr>
+          <TableRow>
             {columns.map(column => (
-              <th key={column.field} {...(column.columnProps ?? {})}>
+              <TableHead key={column.field} {...(column.columnProps ?? {})}>
                 {column.title}
-              </th>
+              </TableHead>
             ))}
-          </tr>
+          </TableRow>
         </thead>
-        <tbody>
-          {/* TODO: Update the key from index to something like id */}
-          {data.map((item, index) => (
-            <tr key={index} {...(item.rowProps || {})}>
-              {/* TODO: Update the key from index to something like id */}
-              {columns.map((column, index) => (
-                <td key={index}>
-                  {column.field
-                    ? item[column.field]
-                    : column.renderCell && column.renderCell(item)}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
+        <tbody>{getTableContent(data, columns)}</tbody>
       </StyledTable>
     </StyledDiv>
+  );
+};
+
+const getTableContent = (data, columns) => {
+  return data?.map((info, idx: number): any => {
+    return <TableContent key={idx} info={info} columns={columns} />;
+  });
+};
+
+const TableContent: any = ({ info, columns }) => {
+  return (
+    <>
+      <TableRow {...(info.rowProps ?? {})}>
+        {columns?.map((column, idx: number) => (
+          <TableData key={idx}>
+            {column.field
+              ? info[column.field]
+              : column.renderCell && column.renderCell(info)}
+          </TableData>
+        ))}
+      </TableRow>
+    </>
   );
 };
 
