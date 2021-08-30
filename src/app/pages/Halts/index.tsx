@@ -1,17 +1,16 @@
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
-import { Tabs } from 'app/components/common/Tabs';
-import { Title } from '../../components/common/Title';
-import { IconButton } from 'app/components/common';
+import { Title, Tabs, IconButton } from 'app/components/common';
 import CustomTable from 'app/components/Table';
 import images from 'utils/images';
 import colors from 'utils/colors';
+import { LinkButton } from '../TopTen';
 import { RowsDropdown } from 'app/components/common/RowsDropDown';
 
-export const Alerts = (): JSX.Element => {
+export const Halts = (): JSX.Element => {
   return (
     <div className="mx-4">
-      <Title title="Alerts" />
+      <Title title="Halts" />
       <Tabs
         tabs={tabs}
         minWidthInContent={'initial'}
@@ -65,21 +64,20 @@ const StyledPrice = styled.div`
   color: ${({ theme }) => theme.colors.green};
 `;
 
+const StyledChangedDiv = styled.div<{ type: string }>`
+  color: ${({ theme, type }) =>
+    theme.colors[type === 'up' ? 'green' : 'roseRed']};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+`;
+
 const tabs = [
   {
     id: 0,
-    name: 'Pre Market',
-    type: 'Pre',
-  },
-  {
-    id: 1,
     name: 'Intraday',
     type: 'In',
-  },
-  {
-    id: 2,
-    name: 'Post Market',
-    type: 'Post',
   },
 ];
 
@@ -87,30 +85,25 @@ const colums = [
   {
     title: '#',
     field: 'id',
-    // style: {
-    //   width: '220px',
-    // },
   },
   {
     title: 'Symbol',
     field: 'symbol',
   },
   {
-    title: 'Price',
-    field: 'price',
+    title: '',
+    renderCell: () => {
+      return <LinkButton>Open</LinkButton>;
+    },
+    columnProps: {
+      style: {
+        maxWidth: 40,
+      },
+    },
   },
   {
-    title: (
-      <div className="d-flex">
-        <StyledTitle>movement</StyledTitle>&nbsp;
-        <StyledTooltip
-          src={images.Tooltip}
-          data-for="tooltip"
-          data-tip="movement"
-        />
-      </div>
-    ),
-    field: 'movement',
+    title: 'Price',
+    field: 'price',
   },
   {
     title: (
@@ -138,7 +131,28 @@ const colums = [
     ),
     field: 'timestamp',
   },
+  {
+    title: (
+      <div className="d-flex justify-content-center">
+        <StyledTitle>diection</StyledTitle>&nbsp;
+        <StyledTooltip
+          src={images.Tooltip}
+          data-for="tooltip"
+          data-tip="diection"
+        />
+      </div>
+    ),
+    field: 'diection',
+  },
 ];
+
+const renderContainerByValue = (type: string): JSX.Element => {
+  return (
+    <StyledChangedDiv type={type}>
+      {type === 'up' ? <>&#9650;</> : <>&#9660;</>}
+    </StyledChangedDiv>
+  );
+};
 
 const data = [
   [
@@ -146,85 +160,34 @@ const data = [
       id: '01',
       symbol: 'silk',
       price: <StyledPrice>$45.12</StyledPrice>,
-      movement: '813223422',
       volume: '201,355,24',
       timestamp: '05:30:21',
+      diection: renderContainerByValue('up'),
+      rowProps: {
+        className: 'table-row',
+      },
     },
     {
       id: '02',
       symbol: 'wQWE',
       price: <StyledPrice>$4.51</StyledPrice>,
-      movement: '813223422',
       volume: '201,355,24',
       timestamp: '12:30:21',
+      diection: renderContainerByValue('down'),
+      rowProps: {
+        className: 'table-row',
+      },
     },
     {
       id: '03',
       symbol: 'wQWE',
       price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
       volume: '201,355,24',
       timestamp: '05:30:21',
-    },
-  ],
-  [
-    {
-      id: '04',
-      symbol: 'wQWE',
-      price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
-      volume: '201,355,24',
-      timestamp: '05:30:21',
-    },
-    {
-      id: '05',
-      symbol: 'wQWE',
-      price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
-      volume: '201,355,24',
-      timestamp: '05:30:21',
-    },
-    {
-      id: '06',
-      symbol: 'wQWE',
-      price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
-      volume: '201,355,24',
-      timestamp: '05:30:21',
-    },
-    {
-      id: '07',
-      symbol: 'wQWE',
-      price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
-      volume: '201,355,24',
-      timestamp: '05:30:21',
-    },
-  ],
-  [
-    {
-      id: '08',
-      symbol: 'wQWE',
-      price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
-      volume: '201,355,24',
-      timestamp: '05:30:21',
-    },
-    {
-      id: '09',
-      symbol: 'wQWE',
-      price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
-      volume: '201,355,24',
-      timestamp: '05:30:21',
-    },
-    {
-      id: 10,
-      symbol: 'wQWE',
-      price: <StyledPrice>$4.12</StyledPrice>,
-      movement: '813223422',
-      volume: '201,355,24',
-      timestamp: '05:30:21',
+      diection: renderContainerByValue('up'),
+      rowProps: {
+        className: 'table-row',
+      },
     },
   ],
 ];
