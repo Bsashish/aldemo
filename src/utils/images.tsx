@@ -9,6 +9,7 @@ import SettingsActive from '../assets/images/SettingsActive.png';
 import SettingsInActive from '../assets/images/SettingsInActive.png';
 import LogoSmall from '../assets/images/LogoSmall.png';
 import Expand from '../assets/images/Expand.svg';
+import Info from '../assets/images/Info.svg';
 import Help from '../assets/images/help.png';
 import Support from '../assets/images/support.png';
 import Suggestion from '../assets/images/suggestion.png';
@@ -32,6 +33,7 @@ const images = {
   SettingsInActive,
   LogoSmall,
   Expand,
+  Info,
   Help,
   Support,
   Suggestion,

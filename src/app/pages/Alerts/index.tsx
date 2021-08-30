@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { Tabs } from 'app/components/common/Tabs';
 import { Title } from '../../components/common/Title';
-import { IconButton } from 'app/components/common';
+import { IconButton, IconInfo } from 'app/components/common';
 import CustomTable from 'app/components/Table';
 import images from 'utils/images';
 import colors from 'utils/colors';

@@ -2,25 +2,31 @@ import { Button, Modal, ModalBody } from 'reactstrap';
 import styled from 'styled-components';
 
 const CloseButton = styled.span`
-  font-size: xx-large;
-  display: block;
+  font-size: 35px;
   text-align: end;
   padding-bottom: 20px;
   padding-right: 10px;
   cursor: pointer;
+  position: absolute;
+  right: 19px;
+  top: 5px;
+  padding: 0;
+  line-height: 50px;
 `;
 
 //Modal modal-content
 const ModalComp = styled(Modal)`
-  width: 45%;
+  justify-content: center;
   .modal-content {
-    border-radius: 1rem;
-    width: 40rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 565px;
   }
 `;
 
 const ModalComBody = styled(ModalBody)`
   text-align: center;
+  padding: 80px 8px 30px;
 `;
 
 type ButtonProps = {
@@ -38,20 +44,39 @@ const StyleButton = styled(Button)<ButtonProps>`
   border: 2px solid ${({ theme }) => theme.colors.green};
   border-radius: 8px;
 
-  height: 4rem;
-  width: 10rem;
+  height: 64px;
+  width: 160px;
   font-size: large;
   font-weight: bold;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 30px;
+  }
 `;
+
+const ButtonContainerDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  max-width: 375px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
 const ModalTitle = styled.h5`
   font-weight: bolder;
   color: ${({ theme }) => theme.colors.darkBlue};
-  margin-bottom: 1.5rem;
+  margin-bottom: 26px;
 `;
 
 const ModalMessage = styled.p`
   color: ${({ theme }) => theme.colors.darkGrey};
-  margin: 0 3rem 4rem 3rem;
+  //margin: 0 3rem 4rem 3rem;
+  margin: 0 auto 50px;
+  max-width: 440px;
 `;
 
 const ModalStyle = styled.div`
@@ -70,16 +95,12 @@ export const SettingModal = ({ modal, setModal }) => {
             When you change these settings, it will change when and how often
             you receive Alurts. With great power comes great responsibility
           </ModalMessage>
-          <div>
-            <StyleButton
-              name="cancel"
-              onClick={toggle}
-              style={{ marginRight: '3rem' }}
-            >
+          <ButtonContainerDiv>
+            <StyleButton name="cancel" onClick={toggle}>
               Cancel
             </StyleButton>
             <StyleButton name="save">Save Changes</StyleButton>
-          </div>
+          </ButtonContainerDiv>
         </ModalStyle>
       </ModalComBody>
     </ModalComp>

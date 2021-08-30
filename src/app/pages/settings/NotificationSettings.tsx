@@ -14,7 +14,7 @@ const NotificationOptions = styled.div`
 const StyledLabel = styled(Label)`
   font-size: large;
   font-weight: 500;
-  line-height: 1.5em;
+  line-height: 26px;
   padding-right: 50px;
 `;
 
@@ -26,11 +26,9 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledRadio = styled(Input).attrs(() => ({ type: 'radio' }))`
-  border: 1px solid ${({ theme }) => theme.colors.darkGrey};
-
   &:checked {
-    border: 1px solid ${({ theme }) => theme.colors.green};
     background-color: ${({ theme }) => theme.colors.green};
+    border-color: ${({ theme }) => theme.colors.green};
   }
 `;
 
