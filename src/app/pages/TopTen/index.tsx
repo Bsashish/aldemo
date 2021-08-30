@@ -49,8 +49,13 @@ const StyledBadge = styled(Badge)`
   right: 8px;
 `;
 
-const StyledChangedDiv = styled.div`
-  color: ${({ theme }) => theme.colors.green};
+type ChangedDivProps = {
+  isValuePositive: boolean;
+};
+
+const StyledChangedDiv = styled.div<ChangedDivProps>`
+  color: ${({ theme, isValuePositive }) =>
+    theme.colors[isValuePositive ? 'green' : 'roseRed']};
   display: flex;
   align-items: center;
 `;
@@ -144,26 +149,16 @@ const colums = [
   },
 ];
 
-const renderIncreseDescreseComponent = (
-  type: number,
-  value: string,
-): JSX.Element => {
-  // 0 for plus and 1 for minus
-  if (type === 0) {
-    return (
-      <StyledChangedDiv>
-        <StyledChangedImg src={images.Up_Arrow} alt="up" />
-        {value}
-      </StyledChangedDiv>
-    );
-  } else {
-    return (
-      <StyledChangedDiv>
-        <StyledChangedImg src={images.Down_Arrow} alt="up" />
-        {value}
-      </StyledChangedDiv>
-    );
-  }
+const renderContainerByValue = (value: string, type: number): JSX.Element => {
+  return (
+    <StyledChangedDiv isValuePositive={type === 0}>
+      <StyledChangedImg
+        src={type === 0 ? images.Up_Arrow : images.Down_Arrow}
+        alt={type === 0 ? 'up' : 'down'}
+      />
+      {value}
+    </StyledChangedDiv>
+  );
 };
 
 const data = [
@@ -172,7 +167,7 @@ const data = [
       id: '01',
       symbol: 'silk',
       lastPrice: '$45.12',
-      change: renderIncreseDescreseComponent(0, '+45.12'),
+      change: renderContainerByValue('+45.12', 0),
       amount: '45.12M',
       rowProps: {
         className: 'table-row',
@@ -182,7 +177,7 @@ const data = [
       id: '02',
       symbol: 'wQWE',
       lastPrice: '$4.12',
-      change: renderIncreseDescreseComponent(1, '-12.04'),
+      change: renderContainerByValue('-12.04', 1),
       amount: '51.12M',
       rowProps: {
         className: 'table-row',
@@ -194,7 +189,7 @@ const data = [
       id: '03',
       symbol: 'wQWE',
       lastPrice: '$4.12',
-      change: renderIncreseDescreseComponent(1, '-12.4'),
+      change: renderContainerByValue('-12.4', 1),
       amount: '51.12M',
       rowProps: {
         className: 'table-row',
@@ -204,7 +199,7 @@ const data = [
       id: '04',
       symbol: 'wQWE',
       lastPrice: '$4.12',
-      change: renderIncreseDescreseComponent(0, '+45.12'),
+      change: renderContainerByValue('+45.12', 0),
       amount: '51.12M',
       rowProps: {
         className: 'table-row',

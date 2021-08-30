@@ -72,7 +72,13 @@ const Icon = styled.img<ActiveProps>`
 `;
 
 const SettingsPage = () => {
-  const [settingSelect, setSettingSelect] = useState('');
+  const [selectedSettings, setSelectedSttings] = useState<string[]>([]);
+
+  const toggleSettingHandler = (prev, current) => {
+    return prev.includes(current)
+      ? prev.filter(setting => setting !== current)
+      : [...prev, current];
+  };
 
   return (
     <StyledDiv>
@@ -83,8 +89,8 @@ const SettingsPage = () => {
           <CollapseTitle
             id="NotifierToggler"
             onClick={() =>
-              setSettingSelect(prev =>
-                prev === 'NotifierToggler' ? '' : 'NotifierToggler',
+              setSelectedSttings(prev =>
+                toggleSettingHandler(prev, 'NotifierToggler'),
               )
             }
           >
@@ -93,10 +99,12 @@ const SettingsPage = () => {
             <Icon
               src={images.Expand}
               alt="logo"
-              className={settingSelect === 'NotifierToggler' ? 'rotate' : ''}
+              className={
+                selectedSettings.includes('NotifierToggler') ? 'rotate' : ''
+              }
             />
           </CollapseTitle>
-          <StyledHr isActive={settingSelect === 'NotifierToggler'} />
+          <StyledHr isActive={selectedSettings.includes('NotifierToggler')} />
           <StyledUncontrolledCollapse toggler="#NotifierToggler">
             <NotificationSettings />
           </StyledUncontrolledCollapse>
@@ -104,8 +112,8 @@ const SettingsPage = () => {
           <CollapseTitle
             id="AlertToggler"
             onClick={() =>
-              setSettingSelect(prev =>
-                prev === 'AlertToggler' ? '' : 'AlertToggler',
+              setSelectedSttings(prev =>
+                toggleSettingHandler(prev, 'AlertToggler'),
               )
             }
           >
@@ -114,10 +122,12 @@ const SettingsPage = () => {
             <Icon
               src={images.Expand}
               alt="logo"
-              className={settingSelect === 'AlertToggler' ? 'rotate' : ''}
+              className={
+                selectedSettings.includes('AlertToggler') ? 'rotate' : ''
+              }
             />
           </CollapseTitle>
-          <StyledHr isActive={settingSelect === 'AlertToggler'} />
+          <StyledHr isActive={selectedSettings.includes('AlertToggler')} />
           <StyledUncontrolledCollapse toggler="#AlertToggler">
             <AlertSettings />
           </StyledUncontrolledCollapse>
@@ -126,8 +136,8 @@ const SettingsPage = () => {
           <CollapseTitle
             id="HaltToggler"
             onClick={() =>
-              setSettingSelect(prev =>
-                prev === 'HaltToggler' ? '' : 'HaltToggler',
+              setSelectedSttings(prev =>
+                toggleSettingHandler(prev, 'HaltToggler'),
               )
             }
           >
@@ -136,10 +146,12 @@ const SettingsPage = () => {
             <Icon
               src={images.Expand}
               alt="logo"
-              className={settingSelect === 'HaltToggler' ? 'rotate' : ''}
+              className={
+                selectedSettings.includes('HaltToggler') ? 'rotate' : ''
+              }
             />
           </CollapseTitle>
-          <StyledHr isActive={settingSelect === 'HaltToggler'} />
+          <StyledHr isActive={selectedSettings.includes('HaltToggler')} />
           <StyledUncontrolledCollapse toggler="#HaltToggler">
             <HaltsSettings />
           </StyledUncontrolledCollapse>
