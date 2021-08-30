@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 interface IIndicatorProps {
-    value: number
+    value: any
 }
 export default function Indicator(props:IIndicatorProps) {
     const { value } = props

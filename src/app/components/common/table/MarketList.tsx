@@ -1,6 +1,4 @@
 
-// Core import
-import { useState, useEffect } from 'react';
 
 // Style import
 import { Card, CardBody, Table } from 'reactstrap';
@@ -11,38 +9,19 @@ import Indicator from 'utils/Indicator';
 
 export interface IMarketListProps {
     type: string
+    marketData: any
 }
 export interface IMarketInfo {
-    id: number,
+    price: string,
     symbol: any,
     last_price: number,
-    change: number
-    amount: number
+    change: string
+    amount: string,
+    volume: string
 }
 
-const mockData: any = [
-    {
-        id: 1,
-        symbol: 'INR',
-        last_price: 3200,
-        change: 89,
-        amount: 3900
-    },
-    {
-        id: 2,
-        symbol: 'INR',
-        last_price: 3200,
-        change: -34,
-        amount: 1200
-    }
-]
 export default function MarketList(props: IMarketListProps) {
-    const [marketData, setMarketData] = useState([])
-    useEffect(() => {
-        // Call the API based on the type ( GAINS etc)
-        setMarketData(mockData)
-    }, [props.type])
-    const { type } = props
+    const { type, marketData } = props
     return (
         <>
             <MarketListWrapper>
@@ -60,15 +39,19 @@ export default function MarketList(props: IMarketListProps) {
                                 </TableHead>
 
                                 <TableHead>
-                                    {'LAST PRICE'}
+                                    {'CLASS'}
+                                </TableHead>
+
+                                <TableHead>
+                                    {'VOLUME'}
+                                </TableHead>
+
+                                <TableHead>
+                                    {'PRICE'}
                                 </TableHead>
 
                                 <TableHead>
                                     {'CHANGE'}
-                                </TableHead>
-
-                                <TableHead>
-                                    {'AMOUNT'}
                                 </TableHead>
 
                             </TableRow>
@@ -92,26 +75,29 @@ const getMarketTableContent = (
         return <MarketRow
             key={i}
             info={market}
+            index={i}
         />
     })
 }
 
 const MarketRow: any = (
-    { info }
+    { info, index }
 ) => {
-    const { id,
+    const {
         symbol,
-        last_price,
-        change,
-        amount } = info
+        price,
+        volume,
+        movement,
+        issue_class, } = info
     return (
         <>
             <TableRow>
-                <TableData>{id}</TableData>
+                <TableData>{index + 1}</TableData>
                 <TableData>{symbol}</TableData>
-                <TableData>{last_price}</TableData>
-                <TableData><Indicator value={change} /></TableData>
-                <TableData>{amount}</TableData>
+                <TableData>{issue_class}</TableData>
+                <TableData>{volume}</TableData>
+                <TableData>{Number(price).toFixed(2)}</TableData>
+                <TableData><Indicator value={Number(movement).toFixed(2)} /></TableData>
             </TableRow>
         </>
     )
